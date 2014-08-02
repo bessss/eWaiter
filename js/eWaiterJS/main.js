@@ -1,5 +1,5 @@
 function main()
-{
+{ 
   this.idRest = 0;
   this.dishes = new menu();
   this.menu = new menuType();
