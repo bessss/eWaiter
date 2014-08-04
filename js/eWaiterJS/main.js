@@ -8,6 +8,7 @@ function main()
   this.preloader = new preloader();
   this.defaultPanel = new defaultPanel();
   this.leftPanel = new leftPanel();
+  this.infoCarousel = new infoCarousel();
   
   this.chngTab = 0;
   
@@ -41,6 +42,7 @@ function selectMenu(name)
       }
       Ext.getCmp('defaultPanel').setStyle({'display':'none'});
       Ext.getCmp('mapPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
+      Ext.getCmp('infoCarousel').setStyle({'display':'none'});
       mainObject.map.reCreateMap();
 
       $('#page_title').html('<p>Где доступен сервис</p>');
@@ -50,6 +52,7 @@ function selectMenu(name)
     {
       Ext.getCmp('mapPanel').setStyle({'display':'none'});
       Ext.getCmp('defaultPanel').setStyle({'display':'none'});
+      Ext.getCmp('infoCarousel').setStyle({'display':'none'});
       if ( Ext.getCmp('tabPanel') != undefined )
       {
         Ext.getCmp('tabPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
@@ -66,11 +69,23 @@ function selectMenu(name)
     case 'defaultPanel':
     {
       Ext.getCmp('defaultPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
+      Ext.getCmp('infoCarousel').setStyle({'display':'none'});
       if ( Ext.getCmp('tabPanel') != undefined )
       {
         Ext.getCmp('tabPanel').setStyle({'display':'none'});
       }
       Ext.getCmp('mapPanel').setStyle({'display':'none'});
+      break;
+    }
+    case 'infoCarousel':
+    {
+      Ext.getCmp('mapPanel').setStyle({'display':'none'});
+      Ext.getCmp('defaultPanel').setStyle({'display':'none'});
+      if ( Ext.getCmp('tabPanel') != undefined )
+      {
+        Ext.getCmp('tabPanel').setStyle({'display':'none'});
+      }
+      Ext.getCmp('infoCarousel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px','visibility': 'visible'});
       break;
     }
   }

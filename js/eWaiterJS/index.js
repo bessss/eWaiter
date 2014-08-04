@@ -63,4 +63,5 @@ Ext.onReady(function(){
   mainObject.map = new googleMap();
   mainObject.defaultPanel.createDefaultPanel();
   mainObject.leftPanel.createLeftPanel();
+  mainObject.infoCarousel.createIC();
 });
