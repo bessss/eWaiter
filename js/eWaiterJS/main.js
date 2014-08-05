@@ -9,6 +9,7 @@ function main()
   this.defaultPanel = new defaultPanel();
   this.leftPanel = new leftPanel();
   this.infoCarousel = new infoCarousel();
+  this.curentPage = 'Страница по умолчанию';
   
   this.chngTab = 0;
   
@@ -27,7 +28,7 @@ function main()
 
 function setMainParameters()
 {
-  $('#page_title').html('<p>Меню ресторана</p>');
+  //$('#page_title').html('<p>Меню ресторана</p>');
 }
 
 function selectMenu(name)
@@ -36,6 +37,7 @@ function selectMenu(name)
   {
     case 'map':
     {
+      this.curentPage = 'Где доступен сервис';
       if ( Ext.getCmp('tabPanel') != undefined )
       {
         Ext.getCmp('tabPanel').setStyle({'display':'none'});
@@ -53,6 +55,7 @@ function selectMenu(name)
       Ext.getCmp('mapPanel').setStyle({'display':'none'});
       Ext.getCmp('defaultPanel').setStyle({'display':'none'});
       Ext.getCmp('infoCarousel').setStyle({'display':'none'});
+      this.curentPage = 'Меню ресторана';
       if ( Ext.getCmp('tabPanel') != undefined )
       {
         Ext.getCmp('tabPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
@@ -68,6 +71,7 @@ function selectMenu(name)
     }
     case 'defaultPanel':
     {
+      this.curentPage = 'Страница по умолчанию';
       Ext.getCmp('defaultPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
       Ext.getCmp('infoCarousel').setStyle({'display':'none'});
       if ( Ext.getCmp('tabPanel') != undefined )
@@ -79,6 +83,7 @@ function selectMenu(name)
     }
     case 'infoCarousel':
     {
+      this.curentPage = 'Как пользоваться сервисом';
       Ext.getCmp('mapPanel').setStyle({'display':'none'});
       Ext.getCmp('defaultPanel').setStyle({'display':'none'});
       if ( Ext.getCmp('tabPanel') != undefined )
@@ -90,6 +95,20 @@ function selectMenu(name)
     }
   }
   autoSlideCarousel($(document).width()*-1,0);
+}
+
+function analizSlideLeftPanel(shift)
+{
+  if ( shift != 244 )
+  {
+    $('#titleButton').css('display','none');
+    $('#page_title').html('<p>' + mainObject.curentPage + '</p>');
+  }
+  else
+  {
+    $('#titleButton').css('display','block');
+    $('#page_title').html('');
+  }
 }
 
 function slideLeftPanel(from,to)

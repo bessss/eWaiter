@@ -56,6 +56,7 @@ function createMenu()
 
   
   Ext.get( tempId ).setHtml(this.menu);
+  mainObject.curentPage = 'Меню ресторана';
   if (mainObject.chngTab == 1)
   {
     mainObject.menu.tabPanel.getComponent('loadingTabPanel').destroy();

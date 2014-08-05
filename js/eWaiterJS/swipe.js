@@ -11,9 +11,11 @@ function autoSlideCarousel(left,main)
     createBlackout();
     $('#blackout').transition({ opacity: 0.8,scale: 1 });
     $('#sliderRightButton').attr('id','sliderLeftButton');
+    analizSlideLeftPanel(main);
   }
   else
   {
+    analizSlideLeftPanel(main);
     $('#blackout').transition({ opacity: 0,scale: 1 },function()
                                                       {
                                                         $('#blackout').css('display','none');
