@@ -58,7 +58,7 @@ Ext.onReady(function(){
     }
   });
 
-  tempP = '<div id="page_title" style="height: 40px ! important;"></div>';
+  tempP = '<div id="page_title" style="height: 40px ! important;position: fixed;left: 20px;"></div>';
   Ext.fly('titleButton').insertHtml( 'afterEnd', tempP, true );
   analizSlideLeftPanel(0);
   createCarousel();
