@@ -40,6 +40,7 @@ function createMenu()
   mainObject.curentPage = 'Меню ресторана';
   mainObject.selectMenu('menu');
   analizSlideLeftPanel(0);
+  mainObject.menu.hideLocalPreloader();
 
   Ext.getCmp('menuRest').setHidden(false);
 }

@@ -2,6 +2,7 @@ function menuType()
 {
   this.menuTypeArray = new Object();
   this.menuType = '';
+  this.localPreloaderHtml = '';
   this.tabPanel = new Object();
   this.menuStore = new Object();
   this.getMenuType = getMenuType;
@@ -9,6 +10,31 @@ function menuType()
   this.getFirstMenu = getFirstMenu;
   this.onChangeTab = onChangeTab;
   this.deletTabPanel = deletTabPanel;
+  this.localPreloader = localPreloader;
+  this.hideLocalPreloader = hideLocalPreloader;
+}
+
+function hideLocalPreloader()
+{
+  if ( $('#smallPreloader').length == 1 )
+  {
+    $('#smallPreloader').css('display','none');
+  }
+}
+
+function localPreloader()
+{
+  if ( $('#smallPreloader').length == 0 )
+  {
+    this.localPreloaderHtml = '<div id="smallPreloader" style="display: table-cell;vertical-align: middle; text-align: center;opacity: 0.4;position: absolute;top: 0px; left: 0px;\
+      width: ' + $(document).width() + 'px;height: ' + ( $(document).height() - Ext.get('title').getHeight() ) + 'px;\
+      background-color: grey;z-index: 10001;"><img src="images/OMG.gif" /></div>';
+    $('#mainContainer').append( this.localPreloaderHtml );
+  }
+  else
+  {
+    $('#smallPreloader').css('display','table-cell');
+  }
 }
 
 function deletTabPanel()
@@ -63,19 +89,14 @@ function create_menuType()
   Ext.getCmp('mainContainer').add( Ext.getCmp('tabPanel') );
   this.getFirstMenu();
 
-  mainObject.secondsEnd.getSeconds();
-  if ( (mainObject.secondsEnd - mainObject.secondsStart) > 6 )
-  {
-    mainObject.preloader.deletePreloader(0);
-  }
-  //mainObject.preloader.deletePreloader( 10000 - (mainObject.secondsEnd - mainObject.secondsStart)*1000 );
-  mainObject.preloader.deletePreloader(8000);
+  mainObject.preloader.deletePreloader(4000);
   Ext.getCmp('tabPanel').addListener('activeitemchange',onChangeTab);
 }
 
 function onChangeTab()
 {
   try{
+    mainObject.menu.localPreloader();
     mainObject.dishes.getMenu( (Ext.getCmp('tabPanel').getActiveItem().id).substr(4,(Ext.getCmp('tabPanel').getActiveItem().id).length) );
     mainObject.chngTab = 1;
   }
