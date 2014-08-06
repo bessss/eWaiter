@@ -112,6 +112,7 @@ function affordabilityAnalysis()
 
 function getRestaurants(userInput)
 {
+  mainObject.preloader.setPreText('Получение списка ресторанов');
   this.userInput = userInput;
   Ext.Ajax.request({
     //url: 'http://admin.ewaiter.info/outputs/outputRestaurantsClose.php?latitude=59.832991&longitude=30.362699&accuracy=30',

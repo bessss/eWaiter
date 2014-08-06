@@ -23,6 +23,7 @@ function deleteSRP()
 
 function buttonClickSRP(index)
 {
+  mainObject.preloader.createPreloader();
   mainObject.selectRestaurant.idRest = mainObject.selectRestaurant.restaurantStore[index]['idRestaurant'];
   $('.cssOver').remove();
   $('head').append('<link rel="stylesheet" type="text/css" href="css/restaurant_' + mainObject.selectRestaurant.restaurantStore[index]['cssName'] + '.css" class="cssOver" />');
