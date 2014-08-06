@@ -10,25 +10,17 @@ function main()
   this.leftPanel = new leftPanel();
   this.infoCarousel = new infoCarousel();
   this.curentPage = 'Страница по умолчанию';
-  
+
   this.chngTab = 0;
-  
-  this.loadingPanel = new loadingPanel();
-  
+
   this.RestDB = new RestDB();
 
   this.secondsStart = new Date();
   this.secondsEnd = new Date();
   this.secondsStart.getSeconds();
 
-  this.setMainParameters = setMainParameters;
   this.slideLeftPanel = slideLeftPanel;
   this.selectMenu = selectMenu;
-}
-
-function setMainParameters()
-{
-  //$('#page_title').html('<p>Меню ресторана</p>');
 }
 
 function selectMenu(name)
@@ -46,8 +38,6 @@ function selectMenu(name)
       Ext.getCmp('mapPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
       Ext.getCmp('infoCarousel').setStyle({'display':'none'});
       mainObject.map.reCreateMap();
-
-      $('#page_title').html('<p>Где доступен сервис</p>');
       break;
     }
     case 'menu':
@@ -64,9 +54,6 @@ function selectMenu(name)
       {
         Ext.getCmp('defaultPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
       }
-
-      $('#page_title').html('<p>Меню ресторана</p>');
-
       break;
     }
     case 'defaultPanel':

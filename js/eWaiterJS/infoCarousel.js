@@ -14,7 +14,7 @@ function createIC()
     defaults: {
         styleHtmlContent: true
     },
-    style: 'visibility: hidden;',
+    style: 'display: none;',
     items: [
         {
           html : '<div style="width: ' + $(document).width() + 'px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table;">\
