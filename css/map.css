@@ -1,0 +1,14 @@
+#home_but
+{
+  background-image: url(../images/home_but.png) !important;
+  box-shadow: none !important;
+}
+#gear_but
+{
+  background-image: url(../images/gear_but.png) !important;
+  box-shadow: none !important;
+}
+
+.x-form-label {
+    text-transform: none !important;
+}

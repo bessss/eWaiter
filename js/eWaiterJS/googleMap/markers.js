@@ -65,7 +65,7 @@ function setUserMarker()
         }
       });
 
-      obj.markers.push(obj.userMarker);
+      obj.markers.markersStore.push(obj.userMarker);
       //obj.map.setCenter(position.coords.latitude, position.coords.longitude);
 
       },
@@ -85,7 +85,7 @@ function createMarkers()
   try{
     for (var i = 0; i < this.markersStore.length; ++i)
     {var temp = obj.markersStore[i]['adress'];
-      this.map.addMarker({
+      mainObject.map.map.addMarker({
         lat: obj.markersStore[i]['latitude'],
         lng: obj.markersStore[i]['longitude'],
         title: obj.markersStore[i]['title'],

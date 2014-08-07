@@ -1,11 +1,13 @@
 $('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/markers.js"></script>');
 $('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapInfoPanel.js"></script>');
+$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapSettingsPanel.js"></script>');
 
 function mapGoogle()
 {
   this.map = new Object();
   this.markers = new mapMarkers(this);
   this.mapInfoPanel = new mapInfoPanel(this);
+  this.mapSettingsPanel = new mapSettingsPanel(this);
   this.updateTimeRest = 10000;
   this.updateTimeUser = 5000;
   this.userMarker - new Object();
@@ -21,7 +23,7 @@ function mapGoogle()
   this.createMapPanel();
   this.createMap();
   this.markers.setUserMarker();
-  this.markers.getMarker();
+  this.markers.getMarkers();
 }
 
 function createMapPanel()
@@ -82,10 +84,43 @@ function reCreateMap()
     lng: obj.longitude,
     click: function(e) {
       hideInfoPanel();
+      hideSettingsPanel();
     }
   });
 
-  this.createMarker();
+  this.map.addControl({
+  position: 'right_bottom',
+  id: 'home_but',
+  content: '',
+  style: {
+    width: '40px',
+    height: '40px',
+    margin: '5px'
+  },
+  events: {
+    click: function(){
+      mainObject.map.map.setCenter(obj.latitude,obj.longitude,5);
+    }
+  }
+});
+
+  this.map.addControl({
+  position: 'right_top',
+  id: 'gear_but',
+  content: '',
+  style: {
+    width: '40px',
+    height: '40px',
+    margin: '5px'
+  },
+  events: {
+    click: function(){
+      createSettingsPanel(this);
+    }
+  }
+});
+
+  this.markers.createMarkers();
 }
 
 function createMap()

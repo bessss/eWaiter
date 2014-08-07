@@ -51,6 +51,7 @@ function linkageInfo()
 
 function createInfoPanel(marker)
 {
+  
   var tempWidth = $('#mapPanel').width() - 10;
   if ( Ext.getCmp('mapInfoPanel') == undefined )
   {
