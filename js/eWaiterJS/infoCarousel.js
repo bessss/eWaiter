@@ -6,6 +6,7 @@ function infoCarousel()
 
 function createIC()
 {
+  var tempMarginTop = ( $(document).height() - Ext.get('title').getHeight() )/6;
   this.panel = Ext.create('Ext.Carousel', {
     width: $(document).width() + 'px',
     height: $(document).height() - Ext.get('title').getHeight() + 'px',
@@ -14,20 +15,31 @@ function createIC()
     defaults: {
         styleHtmlContent: true
     },
-    style: 'display: none;',
+    style: 'display: none;background-image: url(\'images/slider/Test_fon.jpg\');background-size: cover;',
     items: [
         {
           html : '<div style="width: ' + $(document).width() + 'px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table;">\
-                    <div style="width: 300px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table-cell;vertical-align: middle;text-align: center;"><img src="images/test1.png" /></div>\
-                  </div>',
-          style: 'background-color: #5E99CC'
+                    <div style="width: 300px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table-cell;margin-top: -' + ($(document).height() - Ext.get('title').getHeight())/2 + 'px;text-align: center;">\
+                      <img src="images/slider/pic_1.png" style="width: ' + $(document).width() + 'px;margin-top: -' + tempMarginTop + 'px;" /></div>\
+                  </div>'
         },
         {
-            html : 'Item 2',
-            style: 'background-color: #759E60'
+          html : '<div style="width: ' + $(document).width() + 'px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table;">\
+                    <div style="width: 300px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table-cell;text-align: center;">\
+                    <img src="images/slider/pic_2.png" style="width: ' + $(document).width() + 'px;margin-top: -' + tempMarginTop + 'px;" /></div>\
+                  </div>'
         },
         {
-            html : 'Item 3'
+          html : '<div style="width: ' + $(document).width() + 'px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table;">\
+                    <div style="width: 300px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table-cell;vertical-align: middle;text-align: center;">\
+                    <img src="images/slider/pic_3.png" style="width: ' + $(document).width() + 'px;margin-top: -' + tempMarginTop + 'px;" /></div>\
+                  </div>'
+        },
+        {
+          html : '<div style="width: ' + $(document).width() + 'px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table;">\
+                    <div style="width: 300px;height: ' + ($(document).height() - Ext.get('title').getHeight()) + 'px;display: table-cell;vertical-align: middle;text-align: center;">\
+                    <img src="images/slider/pic_4.png" style="width: ' + $(document).width() + 'px;margin-top: -' + tempMarginTop + 'px;" /></div>\
+                  </div>'
         }
     ]
   });
