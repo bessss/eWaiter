@@ -1,6 +1,6 @@
-//$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/markers.js"></script>');
-//$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapInfoPanel.js"></script>');
-//$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapSettingsPanel.js"></script>');
+$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/markers.js"></script>');
+$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapInfoPanel.js"></script>');
+$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapSettingsPanel.js"></script>');
 
 function mapGoogle()
 {
