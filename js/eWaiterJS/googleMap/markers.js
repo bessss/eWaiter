@@ -83,7 +83,7 @@ function createMarkers()
 {
   var obj = this;
   try{
-    for (var i = 0; i < this.markersStore.length; ++i)
+    for (var i = 0; i < this.markersStore.length-1; ++i)
     {var temp = obj.markersStore[i]['adress'];
       mainObject.map.map.addMarker({
         lat: obj.markersStore[i]['latitude'],
