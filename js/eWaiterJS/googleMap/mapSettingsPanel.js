@@ -1,31 +1,38 @@
 function mapSettingsPanel(owner)
 {
   this.owner = owner;
+  this.panel = undefined;
 
   this.hideSettingsPanel = hideSettingsPanel;
   this.createSettingsPanel = createSettingsPanel;
+  this.changeMapSettings = changeMapSettings;
 }
 
 function hideSettingsPanel()
 {
-  if ( $('#mapSettingsPanel').css('display') != 'none' )
+  mainObject.map.mapSettingsPanel.panel.hide();
+}
+
+function changeMapSettings(auto_center,active_rest,del_route)
+{
+  if ( del_route == true)
   {
-    $('#mapSettingsPanel').slideUp('slow');
+    mainObject.map.map.cleanRoute();
+    this.panel.items.items[0].items.items[2].uncheck();
   }
 }
 
 function createSettingsPanel()
 {
   var tempWidth = $('#mapPanel').width();
-  if ( Ext.getCmp('mapSettingsPanel') == undefined )
+  if ( mainObject.map.mapSettingsPanel.panel == undefined )
   {
-    Ext.create('Ext.Panel', {
-      id: 'mapSettingsPanel',
+    mainObject.map.mapSettingsPanel.panel = Ext.create('Ext.form.Panel', {
+      id: 'mapSettingsFormPanel',
       minWidth: '220px',
       width: tempWidth/2,
-      height: '80px',
-      hidden: true,
-      style: 'position: absolute;top: 0px;left: '+ tempWidth/4 +'px;',
+      left: tempWidth/4,
+      height: '160px',
       renderTo: Ext.get('mapPanel'),
       items: [
         {
@@ -37,18 +44,21 @@ function createSettingsPanel()
                     xtype: 'checkboxfield',
                     name : 'auto_center',
                     labelWidth: '80%',
+                    height: '30px',
                     label: 'Автоматическое центрирование'
                 },
                 {
                     xtype: 'checkboxfield',
                     name : 'active_rest',
                     labelWidth: '80%',
+                    height: '30px',
                     label: 'Открытые рестораны'
                 },
                 {
                     xtype: 'checkboxfield',
                     name : 'del_route',
                     labelWidth: '80%',
+                    height: '30px',
                     label: 'Очистить маршрут'
                 },
                 {
@@ -61,21 +71,20 @@ function createSettingsPanel()
                     ui: 'round',
                     handler: function()
                     {
-                      alert('Tapped');
+                      var values = mainObject.map.mapSettingsPanel.panel.getValues();
+                      mainObject.map.mapSettingsPanel.changeMapSettings(values.auto_center, values.active_rest, values.del_route);
+                      //Ext.Msg.alert(' Изменение настроек ',Ext.String.format('{0} {1} {2}', values.auto_center, values.active_rest, values.del_route), Ext.emptyFn);
+                      mainObject.map.mapSettingsPanel.panel.hide();
                     }
                 }
             ]
         }
     ]
     });
-    $('#mapSettingsPanel').slideToggle('slow');
+    mainObject.map.mapSettingsPanel.panel.show();
   }
   else
   {
-    if ( $('#mapSettingsPanel').css('display') == 'none' )
-    {
-      $('#mapSettingsPanel').css('display','block');
-    }
-    //Ext.getCmp('mapSettingsPanel').setHtml( this.html );
+    mainObject.map.mapSettingsPanel.panel.show();
   }
 }
