@@ -14,6 +14,8 @@ function mapGoogle()
   this.latitude = 59.832991;
   this.longitude = 30.362699;
   this.accuracy = 0;
+  
+  this.auto_center = false;
 
   this.createMapPanel = createMapPanel;
   this.overridePosition = overridePosition;
@@ -72,6 +74,10 @@ function overridePosition()
         alert('Определение местоположения не поддерживается');
       }
   });
+  if (obj.auto_center == true)
+  {
+    obj.map.setCenter(obj.latitude,obj.longitude,5);
+  }
   }, obj.updateTimeRest);
 }
 

@@ -15,11 +15,8 @@ function hideSettingsPanel()
 
 function changeMapSettings(auto_center,active_rest,del_route)
 {
-  if ( del_route == true)
-  {
-    mainObject.map.map.cleanRoute();
-    this.panel.items.items[0].items.items[2].uncheck();
-  }
+  mainObject.map.auto_center = auto_center;
+  
 }
 
 function createSettingsPanel()
@@ -30,9 +27,9 @@ function createSettingsPanel()
     mainObject.map.mapSettingsPanel.panel = Ext.create('Ext.form.Panel', {
       id: 'mapSettingsFormPanel',
       minWidth: '220px',
-      width: tempWidth/2,
-      left: tempWidth/4,
-      height: '160px',
+      width: tempWidth - 40,
+      left: '20px',
+      height: '180px',
       renderTo: Ext.get('mapPanel'),
       items: [
         {
@@ -55,18 +52,24 @@ function createSettingsPanel()
                     label: 'Открытые рестораны'
                 },
                 {
-                    xtype: 'checkboxfield',
-                    name : 'del_route',
-                    labelWidth: '80%',
+                    xtype: 'button',
+                    id : 'del_route',
+                    width: '40%',
                     height: '30px',
-                    label: 'Очистить маршрут'
+                    margin: '0 10 10 10',
+                    text: 'Очистить маршрут',
+                    ui: 'round',
+                    handler: function()
+                    {
+                      mainObject.map.map.cleanRoute();
+                    }
                 },
                 {
                     xtype: 'button',
                     id: 'map_settings_ok',
                     width: '40%',
                     height: '30px',
-                    margin: '0 10 0 10',
+                    margin: '0 10 10 10',
                     text: 'Применить',
                     ui: 'round',
                     handler: function()
