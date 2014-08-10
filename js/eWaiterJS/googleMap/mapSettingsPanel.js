@@ -29,7 +29,8 @@ function createSettingsPanel()
       minWidth: '220px',
       width: tempWidth - 40,
       left: '20px',
-      height: '180px',
+      height: '200px',
+      baseCls: 'mapSettingsPanel',
       renderTo: Ext.get('mapPanel'),
       items: [
         {
@@ -58,7 +59,7 @@ function createSettingsPanel()
                     height: '30px',
                     margin: '0 10 10 10',
                     text: 'Очистить маршрут',
-                    ui: 'round',
+                    ui: 'decline-round',
                     handler: function()
                     {
                       mainObject.map.map.cleanRoute();
@@ -71,7 +72,7 @@ function createSettingsPanel()
                     height: '30px',
                     margin: '0 10 10 10',
                     text: 'Применить',
-                    ui: 'round',
+                    ui: 'confirm-round',
                     handler: function()
                     {
                       var values = mainObject.map.mapSettingsPanel.panel.getValues();
