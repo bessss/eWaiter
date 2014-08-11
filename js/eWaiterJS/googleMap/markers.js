@@ -3,6 +3,8 @@ function mapMarkers(owner)
   this.owner = owner;
   this.accuracyCircle = new Object();
   this.availableCircle = new Object();
+  
+  this.markersCount = 0;
 
   this.setUserMarker = setUserMarker;
   this.createMarkers = createMarkers;
@@ -24,6 +26,7 @@ function setUserMarker()
         obj.accuracyCircle.setMap(null);
         obj.availableCircle.setMap(null);
         obj.userMarker.setMap(null);
+        obj.map.removeMarker(obj.userMarker);
       }
       catch(e){}
 
@@ -65,9 +68,13 @@ function setUserMarker()
           hideInfoPanel();
         }
       });
-
+      
+      // необходимо удалять маркер из хранилища, прежде чем записать новый
+      if ( obj.markers.markersStore.length > obj.markers.markersCount )
+      {
+        obj.markers.markersStore.pop();
+      }
       obj.markers.markersStore.push(obj.userMarker);
-      //obj.map.setCenter(position.coords.latitude, position.coords.longitude);
 
       },
       error: function(error) {
@@ -158,6 +165,7 @@ function getMarkers()
     success: function(response, options){
       var temp = Ext.decode(response.responseText);
       obj.markersStore = temp['restaurant'];
+      obj.markersCount = obj.markersStore.length;
       obj.updateTimeRest = temp['updateTimeRest'];
       obj.updateTimeUser = temp['updateTimeUser'];
     },
