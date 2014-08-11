@@ -43,7 +43,7 @@ function linkageInfo(marker)
                  <div style="font-size: 14px;text-decoration: underline;font-weight: bold;">' + marker.title + '</div>\
                  <div style="font-size: 12px;">' + marker.adress + '</div>\
                  <div style="font-size: 10px;">' + marker.contact + '</div>\
-                 <div style="font-size: 10px;">Открыто: 10:00 - 22:00</div>\
+                 <div style="font-size: 10px;">Открыто: '+marker.time_open+':00 - '+marker.time_close+':00</div>\
                </div>\
                <div style="float: left;width: 60px;color: black;">\
                  <div style="width: 22px;height: 22px;background-image: url(\'images/googleImg.png\');margin: 0 auto;"></div>\

@@ -2,6 +2,8 @@ function mapSettingsPanel(owner)
 {
   this.owner = owner;
   this.panel = undefined;
+  
+  this.intervalID = undefined;
 
   this.hideSettingsPanel = hideSettingsPanel;
   this.createSettingsPanel = createSettingsPanel;
@@ -10,14 +12,29 @@ function mapSettingsPanel(owner)
 
 function hideSettingsPanel()
 {
+  var values = mainObject.map.mapSettingsPanel.panel.getValues();
+  mainObject.map.mapSettingsPanel.changeMapSettings(values.auto_center, values.active_rest);
+  Ext.Msg.alert(' Изменение настроек ','Настройки отображения карты изменены', Ext.emptyFn);
   mainObject.map.mapSettingsPanel.panel.hide();
 }
 
-function changeMapSettings(auto_center,active_rest,del_route)
+function changeMapSettings(auto_center,active_rest)
 {
   mainObject.map.auto_center = auto_center;
-  
+  if ( active_rest == true )
+  {
+    mainObject.map.markers.createActiveMarkers();
+    this.intervalID = setInterval(function(){mainObject.map.markers.createActiveMarkers()}, 18000);
+  }
+  else
+  {
+    clearInterval(this.intervalID);
+    mainObject.map.map.removeMarkers();
+    mainObject.map.markers.createMarkers();
+  }
 }
+
+
 
 function createSettingsPanel()
 {
@@ -27,9 +44,8 @@ function createSettingsPanel()
     mainObject.map.mapSettingsPanel.panel = Ext.create('Ext.form.Panel', {
       id: 'mapSettingsFormPanel',
       minWidth: '220px',
-      width: tempWidth - 40,
-      left: '20px',
-      height: '200px',
+      width: tempWidth,
+      height: '170px',
       baseCls: 'mapSettingsPanel',
       renderTo: Ext.get('mapPanel'),
       items: [
@@ -63,22 +79,6 @@ function createSettingsPanel()
                     handler: function()
                     {
                       mainObject.map.map.cleanRoute();
-                    }
-                },
-                {
-                    xtype: 'button',
-                    id: 'map_settings_ok',
-                    width: '40%',
-                    height: '30px',
-                    margin: '0 10 10 10',
-                    text: 'Применить',
-                    ui: 'confirm-round',
-                    handler: function()
-                    {
-                      var values = mainObject.map.mapSettingsPanel.panel.getValues();
-                      mainObject.map.mapSettingsPanel.changeMapSettings(values.auto_center, values.active_rest, values.del_route);
-                      //Ext.Msg.alert(' Изменение настроек ',Ext.String.format('{0} {1} {2}', values.auto_center, values.active_rest, values.del_route), Ext.emptyFn);
-                      mainObject.map.mapSettingsPanel.panel.hide();
                     }
                 }
             ]

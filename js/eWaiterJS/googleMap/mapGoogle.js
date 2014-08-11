@@ -15,7 +15,8 @@ function mapGoogle()
   this.longitude = 30.362699;
   this.accuracy = 0;
   
-  this.auto_center = false;
+  this.auto_center = null;
+  this.active_rest = null;
 
   this.createMapPanel = createMapPanel;
   this.overridePosition = overridePosition;
