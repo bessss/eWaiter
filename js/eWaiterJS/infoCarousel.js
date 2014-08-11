@@ -53,7 +53,7 @@ function createIC()
                       <img src="images/slider/pic_4.png" style="width: ' + $(document).width() + 'px;margin-top: -' + tempMarginTop + 'px;" />\
                       <div class="textBoxSmall">Узнайте, где поблизости есть рестораны с сервисом eWaiter</div>\
                     </div>\
-                  </div>'
+                  </div>' 
         }
     ]
   });
