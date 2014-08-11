@@ -26,9 +26,13 @@ function localPreloader()
 {
   if ( $('#smallPreloader').length == 0 )
   {
-    this.localPreloaderHtml = '<div id="smallPreloader" style="display: table-cell;vertical-align: middle; text-align: center;opacity: 0.4;position: absolute;top: 0px; left: 0px;\
+    this.localPreloaderHtml = '<div id="smallPreloader" style="display: table;vertical-align: middle; text-align: center;opacity: 0.4;position: absolute;top: 0px; left: 0px;\
       width: ' + $(document).width() + 'px;height: ' + ( $(document).height() - Ext.get('title').getHeight() ) + 'px;\
-      background-color: grey;z-index: 10001;"><img src="images/OMG.gif" /></div>';
+      background-color: grey;z-index: 10001;">\
+        <div style="width: ' + $(document).width() + 'px;height: ' + ( $(document).height() - Ext.get('title').getHeight() ) + 'px;display: table-cell;vertical-align: middle;">\
+          <img src="images/localPreloader.png" />\
+        </div>\
+      </div>';
     $('#mainContainer').append( this.localPreloaderHtml );
   }
   else
