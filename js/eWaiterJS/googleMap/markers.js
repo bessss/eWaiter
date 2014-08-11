@@ -95,7 +95,7 @@ function createMarkers()
         time_open: obj.markersStore[i]['timeOpen'],
         time_close: obj.markersStore[i]['timeClose'],
         id: 'marker_' + i,
-        icon: 'images/pivorama.png',//' + obj.markersStore[i]['css_name']+'.png',
+        icon: 'images/' + obj.markersStore[i]['css_name']+'.png',
         click: function(e) {
           createInfoPanel(this);
         }
