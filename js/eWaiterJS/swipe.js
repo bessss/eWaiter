@@ -10,10 +10,19 @@ function autoSlideCarousel(left,main)
   {
     createBlackout();
     $('#blackout').transition({ opacity: 0.8,scale: 1 });
+    $('#titleLeftButton').css({x: '-4px', scale: 1});
+    $('#sliderRightButton').attr('id','sliderLeftButton');
+    analizSlideLeftPanel(main);
   }
   else
   {
-    $('#blackout').transition({ opacity: 0,scale: 1 },function(){$('#blackout').css('display','none');});
+    analizSlideLeftPanel(main);
+    $('#blackout').transition({ opacity: 0,scale: 1 },function()
+                                                      {
+                                                        $('#blackout').css('display','none');
+                                                        $('#sliderLeftButton').attr('id','sliderRightButton');
+                                                      });
+    $('#titleLeftButton').css({x: '0px', scale: 1});
   }
 }
 
@@ -33,10 +42,12 @@ function createBlackout()
 
 function setBlackout(position)
 {
-  var tempBlackout = '';
   var tempOpacity = (9 - position/30)/10;
   createBlackout();
   $('#blackout').css('opacity',tempOpacity);
+
+  var tempMargin = (4 - position/60)*-1;
+  $('#titleLeftButton').css({ x: tempMargin + 'px' });
 }
 
 Ext.define('Ext.MyCarousel', {

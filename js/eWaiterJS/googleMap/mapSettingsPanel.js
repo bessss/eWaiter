@@ -35,7 +35,7 @@ function changeMapSettings(auto_center,active_rest)
   }
 }
 
-// Замерженные файлы
+
 
 function createSettingsPanel()
 {

@@ -91,7 +91,6 @@ function create_menuType()
   });
 
   Ext.getCmp('mainContainer').add( Ext.getCmp('tabPanel') );
-  mainObject.setMainParameters();
   this.getFirstMenu();
 
   mainObject.preloader.deletePreloader(4000);

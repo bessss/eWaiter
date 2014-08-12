@@ -133,38 +133,6 @@ function reCreateMap()
     }
   });
 
-  this.map.addControl({
-  position: 'right_bottom',
-  id: 'home_but',
-  content: '',
-  style: {
-    width: '40px',
-    height: '40px',
-    margin: '5px'
-  },
-  events: {
-    click: function(){
-      mainObject.map.map.setCenter(obj.latitude,obj.longitude,5);
-    }
-  }
-});
-
-  this.map.addControl({
-  position: 'right_top',
-  id: 'gear_but',
-  content: '',
-  style: {
-    width: '40px',
-    height: '40px',
-    margin: '5px'
-  },
-  events: {
-    click: function(){
-      console.log(this);
-    }
-  }
-});
-
   this.createMarker();
 }
 
