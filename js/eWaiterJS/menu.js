@@ -56,6 +56,7 @@ function createMenu()
 
   
   Ext.get( tempId ).setHtml(this.menu);
+<<<<<<< HEAD
   if (mainObject.chngTab == 1)
   {
     mainObject.menu.tabPanel.getComponent('loadingTabPanel').destroy();
@@ -66,6 +67,14 @@ function createMenu()
   }
   
   mainObject.chngTab = 0;
+=======
+
+  mainObject.curentPage = 'Меню ресторана';
+  mainObject.selectMenu('menu');
+  analizSlideLeftPanel(0);
+  mainObject.menu.hideLocalPreloader();
+
+>>>>>>> 6f2a096d8460524320360cfac9fe44624b67a828
   Ext.getCmp('menuRest').setHidden(false);
 }
 

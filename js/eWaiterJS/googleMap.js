@@ -207,7 +207,7 @@ function overridePosition()
 
 function createMap()
 {
- //mainObject.preloader.setPreText('Определение местоположения');
+  mainObject.preloader.setPreText('Определение местоположения');
   var obj = this;
 
   this.map = new GMaps({
