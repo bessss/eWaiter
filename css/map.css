@@ -1,0 +1,24 @@
+#home_but
+{
+  background-image: url(../images/home_but.png) !important;
+  box-shadow: none !important;
+}
+#gear_but
+{
+  background-image: url(../images/gear_but.png) !important;
+  box-shadow: none !important;
+}
+
+#mapSettingsFormPanel .x-form-label {
+    text-transform: none !important;
+}
+#mapSettingsFormPanel .x-field {
+  padding: 0 0.6em 0 0.6em !important;
+  }
+#mapSettingsFormPanel .x-form-fieldset {
+    background: none repeat scroll 0 0 #ffffff;
+}
+#mapSettingsFormPanel .x-button-label, .x-badge {
+    font-size: 10pt;
+    font-weight: bold;
+}

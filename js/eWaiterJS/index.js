@@ -47,8 +47,7 @@ Ext.onReady(function(){
               id: 'titleButton',
               width: '90px',
               height: '40px',
-              baseCls: 'topLogo',
-              style: 'display: none;'
+              baseCls: 'topLogo'
             }
             ],
             cls: 'title'
@@ -58,12 +57,10 @@ Ext.onReady(function(){
     }
   });
 
-  tempP = '<div id="page_title" style="height: 40px ! important;position: fixed;left: 20px;"></div>';
+  tempP = '<div id="page_title" style="height: 40px ! important; padding-left:130px;"></div>';
   Ext.fly('titleButton').insertHtml( 'afterEnd', tempP, true );
-  analizSlideLeftPanel(0);
   createCarousel();
-  mainObject.map = new googleMap();
+  mainObject.map = new mapGoogle();
   mainObject.defaultPanel.createDefaultPanel();
   mainObject.leftPanel.createLeftPanel();
-  mainObject.infoCarousel.createIC();
 });

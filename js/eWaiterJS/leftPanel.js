@@ -85,11 +85,7 @@ function createLeftPanel()
           width: '100%',
           height: '40px',
           iconCls: 'howUse',
-          text: 'Как пользоваться',
-          handler: function()
-          {
-            mainObject.selectMenu('infoCarousel');
-          }
+          text: 'Как пользоваться'
         }
       ]
     },

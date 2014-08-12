@@ -36,14 +36,16 @@ function setRoute(lat, long)
   this.mainObject.map.map.hideInfoWindows();
 }
 
-function linkageInfo()
+function linkageInfo(marker)
 {
-  this.html = '<div style="float: left;height: 200px;width: ' + tempWidth/4 + 'px;color: black;background-color: #d6d6d6;padding-left: 12px;min-width:240px;">\
+  var tempWidth = $('#mapPanel').width() - 10;
+  this.html = '<div style="float: left;width: ' + tempWidth/4 + 'px;color: black;background-color: #d6d6d6;padding-left: 12px;min-width:240px;">\
                  <div style="font-size: 14px;text-decoration: underline;font-weight: bold;">' + marker.title + '</div>\
                  <div style="font-size: 12px;">' + marker.adress + '</div>\
                  <div style="font-size: 10px;">' + marker.contact + '</div>\
+                 <div style="font-size: 10px;">Открыто: '+marker.time_open+':00 - '+marker.time_close+':00</div>\
                </div>\
-               <div style="float: left;height: 200px;width: 60px;color: black;">\
+               <div style="float: left;width: 60px;color: black;">\
                  <div style="width: 22px;height: 22px;background-image: url(\'images/googleImg.png\');margin: 0 auto;"></div>\
                  <div style="color: black;font-weight: 12px;margin: 0 auto;text-align: center;" onclick="setRoute(' + marker.position.k + ',' + marker.position.B + ')">Как добраться</div>\
                </div>';
@@ -51,6 +53,7 @@ function linkageInfo()
 
 function createInfoPanel(marker)
 {
+  this.linkageInfo(marker);
   var tempWidth = $('#mapPanel').width() - 10;
   if ( Ext.getCmp('mapInfoPanel') == undefined )
   {
@@ -59,7 +62,7 @@ function createInfoPanel(marker)
       id: 'mapInfoPanel',
       minWidth: '300px',
       width: tempWidth/4 + 60,
-      height: '80px',
+      minHeight: '80px',
       hidden: true,
       style: 'background-color: white;position: absolute;bottom: 0px;',
       renderTo: Ext.get('mapPanel'),
