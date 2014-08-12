@@ -62,7 +62,7 @@ Ext.onReady(function(){
   Ext.fly('titleButton').insertHtml( 'afterEnd', tempP, true );
   analizSlideLeftPanel(0);
   createCarousel();
-  mainObject.map = new googleMap();
+  mainObject.map = new mapGoogle();
   mainObject.defaultPanel.createDefaultPanel();
   mainObject.leftPanel.createLeftPanel();
   mainObject.infoCarousel.createIC();

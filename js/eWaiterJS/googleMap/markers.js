@@ -3,9 +3,12 @@ function mapMarkers(owner)
   this.owner = owner;
   this.accuracyCircle = new Object();
   this.availableCircle = new Object();
+  
+  this.markersCount = 0;
 
   this.setUserMarker = setUserMarker;
   this.createMarkers = createMarkers;
+  this.createActiveMarkers = createActiveMarkers;
   this.getMarkers = getMarkers;
 }
 
@@ -23,6 +26,7 @@ function setUserMarker()
         obj.accuracyCircle.setMap(null);
         obj.availableCircle.setMap(null);
         obj.userMarker.setMap(null);
+        obj.map.removeMarker(obj.userMarker);
       }
       catch(e){}
 
@@ -60,13 +64,17 @@ function setUserMarker()
         strokeColor: '#FFB540',
         strokeOpacity: 0.1,
         click: function(e) {
-          //alert('Точность позицтонирования: ' + accuracy + ' метров');
+          //alert('Точность позиционирования: ' + accuracy + ' метров');
           hideInfoPanel();
         }
       });
-
-      obj.markers.push(obj.userMarker);
-      //obj.map.setCenter(position.coords.latitude, position.coords.longitude);
+      
+      // необходимо удалять маркер из хранилища, прежде чем записать новый
+      if ( obj.markers.markersStore.length > obj.markers.markersCount )
+      {
+        obj.markers.markersStore.pop();
+      }
+      obj.markers.markersStore.push(obj.userMarker);
 
       },
       error: function(error) {
@@ -83,30 +91,68 @@ function createMarkers()
 {
   var obj = this;
   try{
-    for (var i = 0; i < this.markersStore.length; ++i)
+    for (var i = 0; i < this.markersStore.length-1; ++i)
     {var temp = obj.markersStore[i]['adress'];
-      this.map.addMarker({
+      mainObject.map.map.addMarker({
         lat: obj.markersStore[i]['latitude'],
         lng: obj.markersStore[i]['longitude'],
         title: obj.markersStore[i]['title'],
         adress: obj.markersStore[i]['adress'],
         contact: obj.markersStore[i]['contact'],
+        time_open: obj.markersStore[i]['timeOpen'],
+        time_close: obj.markersStore[i]['timeClose'],
         id: 'marker_' + i,
         icon: 'images/' + obj.markersStore[i]['css_name']+'.png',
         click: function(e) {
           createInfoPanel(this);
-        }/*,
-        infoWindow:{
-            content: '<div style="width: ' + obj.markersStore[i]['title'].length*10 + 'px;text-decoration: underline;font-weight: bold;color:#000000;">\
-            ' + obj.markersStore[i]['title'] + '</div>\
-            <div style="color:#000000;font-size: 10px;">' + obj.markersStore[i]['adress'] + '</div>\
-            <div style="color:#000000;font-size: 10px;">' + obj.markersStore[i]['contact'] + '</div>\
-            <a style="color:#000000;" onClick="setRoute('+obj.markersStore[i]['latitude']+','+obj.markersStore[i]['longitude']+')">Сюда</a>'
-          }*/
+        }
       });
     }
   }
   catch(e){alert('Ошибка создания маркеров: ' + e);}
+}
+
+function createActiveMarkers()
+{
+  var obj = this;
+  for (var i = 0; i < obj.markersStore.length-1; ++i)
+    {
+      var time_open = obj.markersStore[i]['timeOpen'];
+      var time_close = obj.markersStore[i]['timeClose'];
+      var current_time = new Date();
+      var current_hours = current_time.getHours();
+      if ( current_hours > time_open && current_hours < time_close )
+        {
+          try{
+            var tmpM = mainObject.map.map.markers[i];
+          }
+          catch(e){
+            mainObject.map.map.addMarker({
+              lat: obj.markersStore[i]['latitude'],
+              lng: obj.markersStore[i]['longitude'],
+              title: obj.markersStore[i]['title'],
+              adress: obj.markersStore[i]['adress'],
+              contact: obj.markersStore[i]['contact'],
+              time_open: obj.markersStore[i]['timeOpen'],
+              time_close: obj.markersStore[i]['timeClose'],
+              id: 'marker_' + i,
+              icon: 'images/' + obj.markersStore[i]['css_name']+'.png',
+              click: function(e) 
+              {
+                createInfoPanel(this);
+              }
+            });
+          }
+        }
+        else
+        {
+          var mapMarker = mainObject.map.map.markers[i];
+          try{
+            mainObject.map.map.removeMarker(mapMarker);
+          }
+          catch(e){}
+        }
+    }
 }
 
 function getMarkers()
@@ -119,6 +165,7 @@ function getMarkers()
     success: function(response, options){
       var temp = Ext.decode(response.responseText);
       obj.markersStore = temp['restaurant'];
+      obj.markersCount = obj.markersStore.length;
       obj.updateTimeRest = temp['updateTimeRest'];
       obj.updateTimeUser = temp['updateTimeUser'];
     },
