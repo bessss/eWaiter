@@ -8,7 +8,7 @@ function menu()
   this.createMenu = createMenu;
 }
 
-function createMenu()
+/*function createMenu()
 {
   var tempId = mainObject.menu.tabPanel.getActiveItem().innerHtmlElement.id;
 
@@ -43,6 +43,32 @@ function createMenu()
   mainObject.menu.hideLocalPreloader();
 
   Ext.getCmp('menuRest').setHidden(false);
+}*/
+
+function createMenu()
+{
+  var tempId = mainObject.menu.tabPanel.getActiveItem().innerHtmlElement.id;//Ext.get( tempId ).setHtml('');
+  var obj = this;
+
+  this.menu = Ext.create('Ext.List', {
+    width: $(document).width() + 'px',
+    height: $(document).height() - Ext.get('title').getHeight() - 40 + 'px',
+    id: 'menuList',
+    renderTo: Ext.get( tempId ),
+    style: 'color: black;',
+    itemTpl: '<table style="width: ' + $(document).width() + 'px;">\
+                <tr>\
+                  <td><img src="{path}" style="width: 140px;" /></td>\
+                  <td></td>\
+                </tr>\
+              </table>',
+    data: obj.dishesStore
+  });
+
+  mainObject.curentPage = 'Меню ресторана';
+  mainObject.selectMenu('menu');
+  analizSlideLeftPanel(0);
+  mainObject.menu.hideLocalPreloader();
 }
 
 function getMenu(menuType)
