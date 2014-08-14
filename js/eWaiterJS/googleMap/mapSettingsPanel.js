@@ -28,7 +28,7 @@ function changeMapSettings(auto_center,active_rest)
   }
   else
   {
-    clearInterval(this.intervalID);// не хочет работать((((
+    clearInterval(mainObject.map.mapSettingsPanel.intervalID);// не хочет работать((((
     this.intervalID = undefined;
     mainObject.map.map.removeMarkers();
     mainObject.map.markers.createMarkers();
