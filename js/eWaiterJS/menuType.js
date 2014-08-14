@@ -75,7 +75,7 @@ function create_menuType()
     width: $(document).width() + 'px',
     items: obj.menuType,
     defaults: {
-        scrollable: true
+        scrollable: false
     },
     tabBar:{
       scrollable:{

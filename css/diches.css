@@ -1,0 +1,54 @@
+.dishTable{
+
+}
+
+.dishTable td{
+  vertical-align: top;
+}
+
+.dishTable div.name{
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.dishTable div.price{
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dishTable div.price span{
+  font-size: 12px;
+}
+
+.dishTable div.reiting{
+  width: 100%;
+  height: 16px;
+}
+
+.dishTable div.reiting div.starOn{
+  width: 14px;
+  height: 14px;
+  background-image: url('../images/star.png');
+  float: left;
+  background-position: 80px -16px;
+}
+
+.dishTable div.reiting div.starOf{
+  width: 14px;
+  height: 14px;
+  background-image: url('../images/star.png');
+  float: left;
+  background-position: 80px -1px;
+}
+
+.dishTable div.reiting div.voice{
+  width: 14px;
+  height: 14px;
+  float: left;
+  color: black;
+  font-size: 12px;
+  margin: -2px 0px 0px 4px;
+  font-weight: bold;
+}
