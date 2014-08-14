@@ -17,6 +17,7 @@ function createLeftPanel()
     layout: 'hbox',
     //left: -244, 
     modal: false,
+    scrollable: true,
     style: 'position: absolute;z-index: 9999;top: -40px;',
     items: [
     {
