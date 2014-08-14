@@ -1,3 +1,4 @@
+$('head').append('<link rel="stylesheet" type="text/css" href="css/diches.css" />');
 function menu()
 {
   this.dishesStore = new Object();
@@ -6,44 +7,28 @@ function menu()
   this.menuType = '';
   this.getMenu = getMenu;
   this.createMenu = createMenu;
+  this.createReiting = createReiting;
 }
 
-/*function createMenu()
+function createReiting(reiting,voices)
 {
-  var tempId = mainObject.menu.tabPanel.getActiveItem().innerHtmlElement.id;
-
-  var tempCount = Math.floor( $(document).width()/150 );
-  if ( tempCount > this.dishesStore.length )
+  var tempHtml = '';
+  for ( var i = 0; i < 5; ++i )
   {
-    tempCount = this.dishesStore.length;
-  }
-
-  this.menu = '<div style="display: table;margin: 0 auto;width: ' + tempCount*150 + 'px;" id="menuGrid">';
-  for ( var i = 0; i < this.dishesStore.length; ++i )
-  {
-    var tmpName = this.dishesStore[i]['name'];
-    if (tmpName.length > 50)
+    if ( i < reiting )
     {
-      tmpName = tmpName.slice(0,45)+'...';
+      tempHtml += '<div class="starOn"></div>';
     }
-    
-    this.menu += '<div class="frame">\
-                    <img src="' + this.dishesStore[i]['path'] + '" style="width: 140px;height: 142px;">\
-                    <div style="display: block;width: 140px;height: 34px;" id="description">' + tmpName + '</div>\
-                    <div style="display: block;float: right;text-align: right;margin: 10px 10px 4px 0px;color: grey;" id="price">' + this.dishesStore[i]['price'] + ' руб</div>\
-                  </div>';
+    else
+    {
+      tempHtml += '<div class="starOf"></div>';
+    }
   }
-  this.menu += '</div>';
 
-  Ext.get( tempId ).setHtml(this.menu);
+  tempHtml += '<div class="voice">' + voices + '</div>';
 
-  mainObject.curentPage = 'Меню ресторана';
-  mainObject.selectMenu('menu');
-  analizSlideLeftPanel(0);
-  mainObject.menu.hideLocalPreloader();
-
-  Ext.getCmp('menuRest').setHidden(false);
-}*/
+  return tempHtml;
+}
 
 function createMenu()
 {
@@ -56,10 +41,14 @@ function createMenu()
     id: 'menuList',
     renderTo: Ext.get( tempId ),
     style: 'color: black;',
-    itemTpl: '<table style="width: ' + $(document).width() + 'px;">\
+    itemTpl: '<table class="dishTable" style="width: ' + $(document).width() + 'px;">\
                 <tr>\
-                  <td><img src="{path}" style="width: 140px;" /></td>\
-                  <td></td>\
+                  <td style="width: 140px;"><img src="{path}" style="width: 140px;" /></td>\
+                  <td>\
+                    <div class="name">{name}</div>\
+                    <div class="price">{price} <span>руб.</span></div>\
+                    <div class="reiting">' + obj.createReiting(3,0) + '</div>\
+                  </td>\
                 </tr>\
               </table>',
     data: obj.dishesStore
