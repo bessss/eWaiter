@@ -34,7 +34,7 @@ function setUserMarker()
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         title: 'Вы',
-        icon: 'images/star.png',
+        //icon: 'images/star.png',
         click: function(e) {
           //alert('Ваше местоположение');
           hideInfoPanel();
