@@ -148,13 +148,13 @@ function createMap()
 
   GMaps.geolocate({
       success: function(position) {
-      obj.latitude = position.coords.latitude;
-      obj.longitude = position.coords.longitude;
-      obj.accuracy = position.coords.accuracy;
-      //Запуск выбора
-      mainObject.preloader.setPreText('Поиск ресторанов');
-      mainObject.selectRestaurant.getRestaurants();
-      obj.overridePosition(position);
+        obj.latitude = position.coords.latitude;
+        obj.longitude = position.coords.longitude;
+        obj.accuracy = position.coords.accuracy;
+        //Запуск выбора
+        mainObject.preloader.setPreText('Поиск ресторанов');
+        mainObject.selectRestaurant.getRestaurants();
+        obj.overridePosition(position);
       },
       error: function(error) {
         alert('Geolocation failed: ' + error.message);
