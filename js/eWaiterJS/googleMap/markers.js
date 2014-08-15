@@ -168,6 +168,8 @@ function getMarkers()
       obj.markersCount = obj.markersStore.length;
       obj.updateTimeRest = temp['updateTimeRest'];
       obj.updateTimeUser = temp['updateTimeUser'];
+
+      mainObject.selectRestaurant.restaurantClose.store = temp['restaurant'];
     },
     failure: function(response, options){
       //alert("Ошибка получение маркеров: " + response.statusText);

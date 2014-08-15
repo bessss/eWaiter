@@ -67,7 +67,8 @@ function createLeftPanel()
             //{
               autoSlideCarousel($(document).width()*-1,0);
               Ext.getCmp('menuRest').setHidden(true);
-              mainObject.selectRestaurant.getRestaurants(true);
+              //mainObject.selectRestaurant.getRestaurants(true);
+              mainObject.selectRestaurant.restaurantClose.searchRest(true);
             //}
           }},
         {

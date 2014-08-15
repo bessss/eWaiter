@@ -54,7 +54,8 @@ function overridePosition()
       if ( Ext.get('selectRestPanel') == null )
       {
         //Запуск выбора
-        mainObject.selectRestaurant.getRestaurants();
+        //mainObject.selectRestaurant.getRestaurants();
+        mainObject.selectRestaurant.restaurantClose.searchRest();
       }
 
       for ( var i = 0; i < obj.markers.length; ++i )
@@ -153,7 +154,8 @@ function createMap()
         obj.accuracy = position.coords.accuracy;
         //Запуск выбора
         mainObject.preloader.setPreText('Поиск ресторанов');
-        mainObject.selectRestaurant.getRestaurants();
+        //mainObject.selectRestaurant.getRestaurants();
+        mainObject.selectRestaurant.restaurantClose.searchRest();
         obj.overridePosition(position);
       },
       error: function(error) {

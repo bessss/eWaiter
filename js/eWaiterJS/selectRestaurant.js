@@ -1,8 +1,11 @@
+$('head').append('<script type="text/javascript" src="js/eWaiterJS/restaurantClose.js"></script>');
+
 function selectRestaurant()
 {
   this.restaurantStore = new Object();
   this.selectRestPanel = new selectRestPanel();
   this.leaveRestPanel = new leaveRestPanel();
+  this.restaurantClose = new restaurantClose();
   this.idRest = null;
   this.checkRest = false;
   this.userInput = undefined;
@@ -112,7 +115,7 @@ function affordabilityAnalysis()
 
 function getRestaurants(userInput)
 {
-  mainObject.preloader.setPreText('Получение списка ресторанов');
+  /*mainObject.preloader.setPreText('Получение списка ресторанов');
   this.userInput = userInput;
   Ext.Ajax.request({
     //url: 'http://admin.ewaiter.info/outputs/outputRestaurantsClose.php?latitude=59.832991&longitude=30.362699&accuracy=30',
@@ -127,5 +130,5 @@ function getRestaurants(userInput)
     failure: function(response, options){
       //alert("Ошибка получения доступных ресторанов: " + response.responseText);
     }
-  });
+  });*/
 }
