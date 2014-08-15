@@ -42,6 +42,8 @@ function updateRestStore()
 {
   setInterval(function(){console.log('123');
     mainObject.map.markers.getMarkers();
+    mainObject.map.map.removeMarkers();
+    mainObject.map.markers.createMarkers();
   },40000);//1800000
 }
 
