@@ -36,27 +36,62 @@ function buttonClickSRP(index)
 function createSRP(restaurantStore)
 {
   var obj = this;
+  var tmpHeight = mainObject.selectRestaurant.restaurantStore.length*42;
+  if (tmpHeight > 240 )
+  {
+    tmpHeight = 240;
+  }
   
-  this.panel = Ext.create('Ext.List', {
-    width: 200,
-    height: 280,
+  this.panel = Ext.create('Ext.Panel',{
+    top: 10,
     id: 'selectRestPanel',
-    scrollable: {
-        direction: 'vertical'
+    modal: true,
+    hideOnMaskTap: true,
+    width: 200,
+    height: tmpHeight+40,
+    layout: {
+      type: 'vbox',
+      align: 'stretch'
     },
+    contentEl: 'content',
     style: {
       'box-shadow' : '0 0 12px #ffffff',
       'border-radius': '0.6125em',
-      'background-color': '#969292'
+      'background-color': '#DDDDDD'
     },
     styleHtmlContent: 'border-radius: 0.6125em;',
-    itemTpl: '<div>{shotName}</div>',
-    data: mainObject.selectRestaurant.restaurantStore,
-     listeners: {
+    items: [
+      {
+        xtype: 'titlebar',
+        height: 40,
+        docked: 'top',
+        title: 'Доступные рестораны',
+        style: {
+        'border-radius': '0.6125em 0.6125em 0em 0em',
+        'background-color': 'blue'
+        }
+      },
+      {
+        xtype: 'list',
+        width: 200,
+        height: tmpHeight,
+        id: 'selectRestPanelList',
+        scrollable: {
+          direction: 'vertical'
+        },
+        style: {
+          'border-radius': '0em 0em 0.6125em 0.6125em',
+        },
+        styleHtmlContent: 'border-radius: 0em 0em 0.6125em 0.6125em;',
+        itemTpl: '<div>{shotName}</div>',
+        data: mainObject.selectRestaurant.restaurantStore,
+        listeners: {
                 itemtap: function (list, idx, target, record, evt) {
                     mainObject.selectRestaurant.selectRestPanel.buttonClickSRP( idx );
                 }
             }
+      }
+    ]
   });
   
   this.panel.setCentered(true).show();
