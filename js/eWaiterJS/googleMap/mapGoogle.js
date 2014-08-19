@@ -50,13 +50,15 @@ function overridePosition()
       obj.latitude = position.coords.latitude;
       obj.longitude = position.coords.longitude;
       obj.accuracy = position.coords.accuracy;
+      
+      mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
 
-      if ( Ext.get('selectRestPanel') == null )
+      /*if ( Ext.get('selectRestPanel') == null )
       {
         //Запуск выбора
         //mainObject.selectRestaurant.getRestaurants();
-        mainObject.selectRestaurant.restaurantClose.searchRest();
-      }
+        mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
+      }*/
 
       for ( var i = 0; i < obj.markers.length; ++i )
       {
@@ -80,7 +82,7 @@ function overridePosition()
   {
     obj.map.setCenter(obj.latitude,obj.longitude,5);
   }
-  }, obj.updateTimeRest);
+  }, 15000);//obj.updateTimeRest);
 }
 
 function reCreateMap()
@@ -156,7 +158,7 @@ function createMap()
         mainObject.preloader.setPreText('Поиск ресторанов');
         //mainObject.selectRestaurant.getRestaurants();
         mainObject.selectRestaurant.restaurantClose.searchRest();
-        obj.overridePosition(position);
+        obj.overridePosition();
       },
       error: function(error) {
         alert('Geolocation failed: ' + error.message);

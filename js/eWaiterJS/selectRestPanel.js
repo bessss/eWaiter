@@ -26,8 +26,8 @@ function buttonClickSRP(index)
   mainObject.preloader.createPreloader();
   mainObject.selectRestaurant.idRest = mainObject.selectRestaurant.restaurantStore[index]['idRestaurant'];
   $('.cssOver').remove();
-  $('head').append('<link rel="stylesheet" type="text/css" href="css/restaurant_' + mainObject.selectRestaurant.restaurantStore[index]['css_name'] + '.css" class="cssOver" />');
-  $('#menuLogo').html('<img src="http://ewaiter.info/application/images/'+mainObject.selectRestaurant.restaurantStore[index]['css_name']+'_theme_logo.png" />');
+  $('head').append('<link rel="stylesheet" type="text/css" href="css/restaurant_' + mainObject.selectRestaurant.restaurantStore[index]['cssName'] + '.css" class="cssOver" />');
+  $('#menuLogo').html('<img src="http://ewaiter.info/application/images/'+mainObject.selectRestaurant.restaurantStore[index]['cssName']+'_theme_logo.png" />');
   mainObject.selectRestaurant.restTitle = '<p>Вы в ресторане:</p><p>'+mainObject.selectRestaurant.restaurantStore[index]['shotName']+'</p>';
   Ext.fly('restName').setHtml(mainObject.selectRestaurant.restTitle);
   mainObject.menu.getMenuType();
