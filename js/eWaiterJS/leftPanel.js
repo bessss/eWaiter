@@ -124,7 +124,7 @@ function ifOneRest()
     }
     default:
     {
-      Ext.getCmp('menuRest').setHidden(true);
+      Ext.getCmp('menuRest').setHidden(false);
       Ext.getCmp('changeResT').setHidden(false);
       break;
     }

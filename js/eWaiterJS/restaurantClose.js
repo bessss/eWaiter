@@ -5,6 +5,7 @@ function restaurantClose()
 
   this.calcDist = calcDist;
   this.searchRest = searchRest;
+  this.intervalSearchRest = intervalSearchRest;
   this.updateRestStore = updateRestStore;
 
   this.updateRestStore();
@@ -40,11 +41,55 @@ function calcDist(lat1, long1, lat2, long2) {
 
 function updateRestStore()
 {
-  setInterval(function(){console.log('123');
+  setInterval(function(){
     mainObject.map.markers.getMarkers();
     mainObject.map.map.removeMarkers();
     mainObject.map.markers.createMarkers();
   },40000);//1800000
+}
+
+function intervalSearchRest()
+{console.log('interval');
+  var obj = this;
+  var tempArray = new Array();
+  
+  for ( var i = 0; i < obj.store.length; ++i )
+  {
+    var tempDist = obj.calcDist( mainObject.map.latitude, mainObject.map.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );
+    if ( ( obj.store[i]['accuracy'] + mainObject.map.accuracy ) > tempDist )
+    {
+      tempArray.push( obj.store[i] );
+    }
+  }
+
+  mainObject.selectRestaurant.restaurantStore = tempArray;
+
+  if ( tempArray.length > 0 )
+  {
+    mainObject.selectRestaurant.checkRestaurant();
+    if ( mainObject.selectRestaurant.checkRest == true )
+    {
+      //Если находимся в текущем ресторане
+      if ( $('#selectRestPanel').length > 0 )
+      {
+        //Если активна панель выбора
+        if ( mainObject.selectRestaurant.restCount != tempArray.length )
+        {
+          mainObject.selectRestaurant.selectRestPanel.deleteSRP();
+          mainObject.selectRestaurant.selectCountRest();
+        }
+      }
+    }
+    else
+    {
+      //Если не находимся в текущем ресторане
+      mainObject.selectRestaurant.selectRestPanel.deleteSRP();
+      mainObject.menu.deletTabPanel();
+      mainObject.selectRestaurant.restCount = 0;
+      mainObject.selectRestaurant.selectCountRest();
+      mainObject.selectRestaurant.restCount = tempArray.length;
+    }
+  }
 }
 
 function searchRest(userInput)
@@ -56,7 +101,6 @@ function searchRest(userInput)
     var tempDist = this.calcDist( mainObject.map.latitude, mainObject.map.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );
     if ( ( this.store[i]['accuracy'] + mainObject.map.accuracy ) > tempDist )
     {
-      //console.log( this.store[i]['title'] );
       tempArray.push( this.store[i] );
     }
   }
