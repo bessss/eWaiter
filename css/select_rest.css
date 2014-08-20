@@ -1,0 +1,8 @@
+#selectRestPanelList .x-html {
+    line-height: 1;
+}
+
+#selectRestPanel .x-html {
+    padding: 0px;
+    border-radius: 0em 0em 0.6125em 0.6125em;
+}
