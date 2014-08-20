@@ -4,7 +4,7 @@ function selectRestaurant()
 {
   this.restaurantStore = new Object();
   this.selectRestPanel = new selectRestPanel();
-  this.leaveRestPanel = new leaveRestPanel();
+  //this.leaveRestPanel = new leaveRestPanel();
   this.restaurantClose = new restaurantClose();
   this.idRest = null;
   this.checkRest = false;

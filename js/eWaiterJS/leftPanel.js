@@ -17,7 +17,7 @@ function createLeftPanel()
     layout: 'hbox',
     //left: -244, 
     modal: false,
-    scrollable: true,
+    //scrollable: true,
     style: 'position: absolute;z-index: 9999;top: -40px;',
     items: [
     {
@@ -67,8 +67,10 @@ function createLeftPanel()
             //if ( Ext.get('selectRestPanel') == null )
             //{
               autoSlideCarousel($(document).width()*-1,0);
-              Ext.getCmp('menuRest').setHidden(true);
+              //Ext.getCmp('menuRest').setHidden(true);
               //mainObject.selectRestaurant.getRestaurants(true);
+              mainObject.selectRestaurant.restCount = 0;
+              mainObject.selectRestaurant.selectRestPanel.deleteSRP();
               mainObject.selectRestaurant.restaurantClose.searchRest(true);
             //}
           }},
@@ -124,7 +126,7 @@ function ifOneRest()
     }
     default:
     {
-      Ext.getCmp('menuRest').setHidden(false);
+      Ext.getCmp('menuRest').setHidden(true);
       Ext.getCmp('changeResT').setHidden(false);
       break;
     }
