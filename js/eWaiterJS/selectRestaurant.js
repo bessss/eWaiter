@@ -1,4 +1,4 @@
-$('head').append('<script type="text/javascript" src="js/eWaiterJS/restaurantClose.js"></script>');
+//$('head').append('<script type="text/javascript" src="js/eWaiterJS/restaurantClose.js"></script>');
 
 function selectRestaurant()
 {
@@ -94,6 +94,7 @@ function selectCountRest()
       break;
     }
   }
+  mainObject.leftPanel.ifOneRest();
 }
 
 function affordabilityAnalysis()

@@ -163,13 +163,22 @@ function getMarkers()
     method: 'GET',
     headers:{'Content-Type:': 'application/x-ww-urlencoded; charset=UTF-8'},
     success: function(response, options){
-      var temp = Ext.decode(response.responseText);
-      obj.markersStore = temp['restaurant'];
-      obj.markersCount = obj.markersStore.length;
-      obj.updateTimeRest = temp['updateTimeRest'];
-      obj.updateTimeUser = temp['updateTimeUser'];
+      if ( response.responseText != '' )
+      {
+        var temp = Ext.decode(response.responseText);
+        obj.markersStore = temp['restaurant'];
+        obj.markersCount = obj.markersStore.length;
+        obj.updateTimeRest = temp['updateTimeRest'];
+        obj.updateTimeUser = temp['updateTimeUser'];
 
-      mainObject.selectRestaurant.restaurantClose.store = temp['restaurant'];
+        mainObject.selectRestaurant.restaurantClose.store = temp['restaurant'];
+      }
+      else
+      {
+        obj.markersStore = new Array();
+        obj.markersCount = obj.markersStore.length;
+        mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
+      }
     },
     failure: function(response, options){
       //alert("Ошибка получение маркеров: " + response.statusText);

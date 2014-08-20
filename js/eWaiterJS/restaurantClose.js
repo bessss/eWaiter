@@ -69,9 +69,11 @@ function intervalSearchRest()
     mainObject.selectRestaurant.checkRestaurant();
     if ( mainObject.selectRestaurant.checkRest == true )
     {
+      //Если находимся в текущем ресторане
       if ( $('#selectRestPanel').length > 0 )
       {
-        if (  mainObject.selectRestaurant.restCount != tempArray.length )
+        //Если активна панель выбора
+        if ( mainObject.selectRestaurant.restCount != tempArray.length )
         {
           mainObject.selectRestaurant.selectRestPanel.deleteSRP();
           mainObject.selectRestaurant.selectCountRest();
@@ -80,10 +82,12 @@ function intervalSearchRest()
     }
     else
     {
-      if ( $('#selectRestPanel').length > 0 )
-      {
-        //
-      }
+      //Если не находимся в текущем ресторане
+      mainObject.selectRestaurant.selectRestPanel.deleteSRP();
+      mainObject.menu.deletTabPanel();
+      mainObject.selectRestaurant.restCount = 0;
+      mainObject.selectRestaurant.selectCountRest();
+      mainObject.selectRestaurant.restCount = tempArray.length;
     }
   }
 }
