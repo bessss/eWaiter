@@ -126,7 +126,15 @@ function ifOneRest()
     }
     default:
     {
-      Ext.getCmp('menuRest').setHidden(true);
+      if ( mainObject.selectRestaurant.userInput == true )
+      {
+        Ext.getCmp('menuRest').setHidden(false);
+      }
+      else
+      {
+        Ext.getCmp('menuRest').setHidden(true);
+      }
+      
       Ext.getCmp('changeResT').setHidden(false);
       break;
     }
