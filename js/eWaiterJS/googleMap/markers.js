@@ -91,8 +91,9 @@ function createMarkers()
 {
   var obj = this;
   try{
-    for (var i = 0; i < this.markersStore.length-1; ++i)
-    {var temp = obj.markersStore[i]['adress'];
+    for (var i = 0; i < this.markersStore.length - 1; ++i)
+    {
+      var temp = obj.markersStore[i]['adress'];
       mainObject.map.map.addMarker({
         lat: obj.markersStore[i]['latitude'],
         lng: obj.markersStore[i]['longitude'],
@@ -102,7 +103,7 @@ function createMarkers()
         time_open: obj.markersStore[i]['timeOpen'],
         time_close: obj.markersStore[i]['timeClose'],
         id: 'marker_' + i,
-        icon: 'images/' + obj.markersStore[i]['css_name']+'.png',
+        icon: 'images/' + obj.markersStore[i]['cssName']+'.png',
         click: function(e) {
           createInfoPanel(this);
         }

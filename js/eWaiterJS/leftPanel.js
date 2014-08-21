@@ -42,61 +42,59 @@ function createLeftPanel()
           'text-align': 'center',
           'font-weight':'bold'
         }},
+      {
+        xtype: 'button',
+        width: '100%',
+        height: '40px',
+        id: 'menuRest',
+        text: 'Меню ресторана',
+        style: 'display: none',
+        iconCls: 'menuRest',
+        handler: function()
         {
-          xtype: 'button',
-          width: '100%',
-          height: '40px',
-          id: 'menuRest',
-          text: 'Меню ресторана',
-          style: 'display: none',
-          iconCls: 'menuRest',
-          handler: function()
-          {
-            mainObject.selectMenu('menu');
-          }},
+          mainObject.selectMenu('menu');
+      }},
+      {
+        xtype: 'button',
+        width: '100%',
+        height: '40px',
+        text: 'Выбрать другой ресторан',
+        style: 'display: none',
+        id: 'changeResT',
+        iconCls: 'changeResT',
+        handler: function()
         {
-          xtype: 'button',
-          width: '100%',
-          height: '40px',
-          text: 'Выбрать другой ресторан',
-          style: 'display: none',
-          id: 'changeResT',
-          iconCls: 'changeResT',
-          handler: function()
-          {
-            //if ( Ext.get('selectRestPanel') == null )
-            //{
-              autoSlideCarousel($(document).width()*-1,0);
-              //Ext.getCmp('menuRest').setHidden(true);
-              //mainObject.selectRestaurant.getRestaurants(true);
-              mainObject.selectRestaurant.restCount = 0;
-              mainObject.selectRestaurant.selectRestPanel.deleteSRP();
-              mainObject.selectRestaurant.restaurantClose.searchRest(true);
-            //}
-          }},
+          //if ( Ext.get('selectRestPanel') == null )
+          //{
+            autoSlideCarousel($(document).width()*-1,0);
+            //Ext.getCmp('menuRest').setHidden(true);
+            //mainObject.selectRestaurant.getRestaurants(true);
+            mainObject.selectRestaurant.restCount = 0;
+            mainObject.selectRestaurant.selectRestPanel.deleteSRP();
+            mainObject.selectRestaurant.restaurantClose.searchRest(true);
+          //}
+      }},
+      {
+        xtype: 'button',
+        width: '100%',
+        height: '44px',
+        text: 'Где доступен сервис',
+        iconCls: 'whereRest',
+        handler: function()
         {
-          xtype: 'button',
-          width: '100%',
-          height: '44px',
-          text: 'Где доступен сервис',
-          iconCls: 'whereRest',
-          handler: function()
-          {
-            mainObject.selectMenu('map');
-          }},
+          mainObject.selectMenu('map');
+        }},
+      {
+        xtype: 'button',
+        width: '100%',
+        height: '40px',
+        iconCls: 'howUse',
+        text: 'Как пользоваться',
+        handler: function()
         {
-          xtype: 'button',
-          width: '100%',
-          height: '40px',
-          iconCls: 'howUse',
-          text: 'Как пользоваться',
-          handler: function()
-          {
-            mainObject.selectMenu('infoCarousel');
-          }
+          mainObject.selectMenu('infoCarousel');
         }
-      ]
-    },
+      }]},
     {
       xtype: 'button',
       width: '8px',
