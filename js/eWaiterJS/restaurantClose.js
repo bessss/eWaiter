@@ -67,6 +67,16 @@ function intervalSearchRest()
   if ( tempArray.length > 0 )
   {
     mainObject.selectRestaurant.checkRestaurant();
+
+    if ( tempArray.length > 1 )
+    {
+      Ext.getCmp('changeResT').setHidden(false);
+    }
+    else
+    {
+      Ext.getCmp('changeResT').setHidden(true);
+    }
+
     if ( mainObject.selectRestaurant.checkRest == true )
     {
       //Если находимся в текущем ресторане
@@ -89,6 +99,10 @@ function intervalSearchRest()
       mainObject.selectRestaurant.selectCountRest();
       mainObject.selectRestaurant.restCount = tempArray.length;
     }
+  }
+  else
+  {
+    Ext.getCmp('changeResT').setHidden(true);
   }
 }
 
