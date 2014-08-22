@@ -78,6 +78,7 @@ function create_menuType()
         scrollable: false
     },
     tabBar:{
+      id: 'tabBarTabPanel',
       scrollable:{
         direction: 'horizontal',
         directionLock: true,

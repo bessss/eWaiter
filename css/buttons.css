@@ -44,3 +44,8 @@
 #ext-carouselindicator-1{
   display: none;
 }
+
+/*Кнопки табов*/
+.x-button-label{
+  line-height: 2.6em !important;
+}
