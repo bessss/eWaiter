@@ -8,6 +8,12 @@ function autoSlideCarousel(left,main)
   Ext.getCmp('MyCarousel').offset = main;
   if ( main == 244 )
   {
+    if ( $('#menuList').length > 0 )
+    {
+      //Блокирование прокрутки
+      Ext.getCmp('menuList').setScrollable(false);
+    }
+
     createBlackout();
     $('#blackout').transition({ opacity: 0.8,scale: 1 });
     $('#titleLeftButton').css({x: '-4px', scale: 1});
@@ -16,6 +22,12 @@ function autoSlideCarousel(left,main)
   }
   else
   {
+    if ( $('#menuList').length > 0 )
+    {
+      //Блокирование прокрутки
+      Ext.getCmp('menuList').setScrollable(true);
+    }
+
     analizSlideLeftPanel(main);
     $('#blackout').transition({ opacity: 0,scale: 1 },function()
                                                       {
@@ -197,6 +209,12 @@ Ext.define('Ext.MyCarousel', {
 	          if ( e.absDeltaX > e.absDeltaY )
 	          {//$('#title').html('offset: ' + offset + ' offsetLeft: ' + $('#leftPanelContainer').offset().left);
 	            //Если горизонтальное дивижение
+	            if ( $('#menuList').length > 0 )
+	            {
+	              //Блокирование прокрутки
+	              Ext.getCmp('menuList').setScrollable(false);
+	            }
+	
 	            if ( dragDirection == 1 )
 	            {
 	              //Если слева на право
