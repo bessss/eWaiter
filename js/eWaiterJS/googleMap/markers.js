@@ -176,9 +176,11 @@ function getMarkers()
       }
       else
       {
+        //Если ресторанов нет
         obj.markersStore = new Array();
         obj.markersCount = obj.markersStore.length;
         mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
+        mainObject.preloader.deletePreloader(0);
       }
     },
     failure: function(response, options){
