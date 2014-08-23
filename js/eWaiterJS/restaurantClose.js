@@ -53,7 +53,7 @@ function intervalSearchRest()
   var obj = this;
   var tempArray = new Array();
 
- // mainObject.map.accuracy = 40;
+  mainObject.map.accuracy = 40;
 
   for ( var i = 0; i < obj.store.length; ++i )
   {
@@ -110,10 +110,11 @@ function intervalSearchRest()
 
 function searchRest(userInput)
 {
-	//var obj = this;
   mainObject.selectRestaurant.userInput = userInput;
   var tempArray = new Array();//alert( this.store.length );
-  //mainObject.map.accuracy = 40;
+
+  mainObject.map.accuracy = 40;
+
   for ( var i = 0; i < this.store.length; ++i )
   {
     var tempDist = this.calcDist( mainObject.map.latitude, mainObject.map.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );

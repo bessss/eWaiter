@@ -14,7 +14,7 @@ function hideSettingsPanel()
 {
   var values = mainObject.map.mapSettingsPanel.panel.getValues();
   mainObject.map.mapSettingsPanel.changeMapSettings(values.auto_center, values.active_rest);
-  Ext.Msg.alert(' Изменение настроек ','Настройки отображения карты изменены', Ext.emptyFn);
+  //Ext.Msg.alert(' Изменение настроек ','Настройки отображения карты изменены', Ext.emptyFn);
   mainObject.map.mapSettingsPanel.panel.hide();
 }
 

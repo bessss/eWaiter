@@ -11,7 +11,7 @@ function leftPanel()
 function createLeftPanel()
 {
   this.panel = Ext.create('Ext.Panel',{
-    width: '252px',
+    width: '244px',
     height: $(document).height() - Ext.get('title').getHeight() + 'px',
     id: 'leftPanel',
     layout: 'hbox',
@@ -97,7 +97,8 @@ function createLeftPanel()
       }]},
     {
       xtype: 'button',
-      width: '8px',
+      //width: '8px',
+      width: '0px',
       height: $(document).height() - Ext.get('title').getHeight() + 'px',
       id: 'slideLeft'
     }]

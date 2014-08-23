@@ -265,8 +265,8 @@ function createCarousel()
       styleHtmlContent: true
     },
     items: [{
-      style: 'position: absolute;right: -10px;padding: 0px;',
-      width: '254px',
+      style: 'position: absolute;right: 0px;padding: 0px;',
+      width: '244px',
       id: 'leftPanelContainer'
     },
     {
