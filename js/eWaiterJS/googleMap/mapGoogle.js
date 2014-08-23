@@ -25,8 +25,8 @@ function mapGoogle()
 
   this.createMapPanel();
   this.createMap();
-  this.markers.setUserMarker();
-  this.markers.getMarkers();
+  //this.markers.setUserMarker();
+  //this.markers.getMarkers();
 }
 
 function createMapPanel()
@@ -157,7 +157,8 @@ function createMap()
         //Запуск выбора
         mainObject.preloader.setPreText('Поиск ресторанов');
         //mainObject.selectRestaurant.getRestaurants();
-        mainObject.selectRestaurant.restaurantClose.searchRest();
+        //mainObject.selectRestaurant.restaurantClose.searchRest();
+        obj.markers.getMarkers();
         obj.overridePosition();
       },
       error: function(error) {

@@ -52,11 +52,13 @@ function intervalSearchRest()
 {console.log('interval');
   var obj = this;
   var tempArray = new Array();
-  
+
+ // mainObject.map.accuracy = 40;
+
   for ( var i = 0; i < obj.store.length; ++i )
   {
-    var tempDist = obj.calcDist( mainObject.map.latitude, mainObject.map.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );
-    if ( ( obj.store[i]['accuracy'] + mainObject.map.accuracy ) > tempDist )
+    var tempDist = obj.calcDist( mainObject.map.latitude, mainObject.map.longitude, obj.store[i]['latitude'], obj.store[i]['longitude'] );
+    if ( ( parseFloat(obj.store[i]['accuracy']) + mainObject.map.accuracy ) >= tempDist )
     {
       tempArray.push( obj.store[i] );
     }
@@ -108,13 +110,17 @@ function intervalSearchRest()
 
 function searchRest(userInput)
 {
+	//var obj = this;
   mainObject.selectRestaurant.userInput = userInput;
-  var tempArray = new Array();
+  var tempArray = new Array();//alert( this.store.length );
+  //mainObject.map.accuracy = 40;
   for ( var i = 0; i < this.store.length; ++i )
   {
     var tempDist = this.calcDist( mainObject.map.latitude, mainObject.map.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );
-    if ( ( this.store[i]['accuracy'] + mainObject.map.accuracy ) > tempDist )
+    //alert('tempDist: ' + tempDist + ' сумма:' + (this.store[i]['accuracy'] + mainObject.map.accuracy) );
+    if ( ( parseFloat(this.store[i]['accuracy']) + mainObject.map.accuracy ) >= tempDist )
     {
+      //alert('Ресторан: ' + obj.store[i]['shotName'] + ' tempDist:' + tempDist + ' сумма: ' + ( parseFloat(obj.store[i]['accuracy']) + mainObject.map.accuracy ) );
       tempArray.push( this.store[i] );
     }
   }
@@ -124,5 +130,9 @@ function searchRest(userInput)
     mainObject.selectRestaurant.restaurantStore = tempArray;
     mainObject.selectRestaurant.affordabilityAnalysis();
     mainObject.leftPanel.ifOneRest();
+  }
+  else
+  {
+    mainObject.preloader.deletePreloader(0);
   }
 }

@@ -182,6 +182,8 @@ function getMarkers()
         mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
         mainObject.preloader.deletePreloader(0);
       }
+      obj.setUserMarker();
+      mainObject.selectRestaurant.restaurantClose.searchRest();
     },
     failure: function(response, options){
       //alert("Ошибка получение маркеров: " + response.statusText);
