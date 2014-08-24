@@ -10,7 +10,7 @@ function mapGoogle()
   this.mapSettingsPanel = new mapSettingsPanel(this);
   this.updateTimeRest = 10000;
   this.updateTimeUser = 5000;
-  this.userMarker - new Object();
+  this.userMarker = null;
   this.latitude = 59.832991;
   this.longitude = 30.362699;
   this.accuracy = 0;

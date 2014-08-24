@@ -10,6 +10,8 @@ function mapMarkers(owner)
   this.createMarkers = createMarkers;
   this.createActiveMarkers = createActiveMarkers;
   this.getMarkers = getMarkers;
+
+  this.setUserMarker();
 }
 
 function setUserMarker()
@@ -30,16 +32,25 @@ function setUserMarker()
       }
       catch(e){}
 
-      obj.userMarker = obj.map.addMarker({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        title: 'Вы',
-        //icon: 'images/star.png',
-        click: function(e) {
-          //alert('Ваше местоположение');
-          hideInfoPanel();
-        }
-      });
+      if ( obj.userMarker == null )
+      {
+        obj.userMarker = obj.map.addMarker({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          title: 'Вы',
+          //icon: 'images/star.png',
+          click: function(e) {
+            //alert('Ваше местоположение');
+            hideInfoPanel();
+          }
+        });
+      }
+      else
+      {
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        console.log( latlng );
+        obj.userMarker.setPosition(latlng);
+      }
 
       obj.availableCircle = obj.map.drawCircle({
         lat: position.coords.latitude,
@@ -61,7 +72,7 @@ function setUserMarker()
         radius: position.coords.accuracy,
         fillColor: '#FFB540',
         fillOpacity: 0.2,
-        strokeColor: '#FFB540',
+        strokeColor: '#92b8db',//FFB540',
         strokeOpacity: 0.1,
         click: function(e) {
           //alert('Точность позиционирования: ' + accuracy + ' метров');
@@ -69,12 +80,18 @@ function setUserMarker()
         }
       });
       
-      // необходимо удалять маркер из хранилища, прежде чем записать новый
-      if ( obj.markers.markersStore.length > obj.markers.markersCount )
-      {
-        obj.markers.markersStore.pop();
+      try{
+        // необходимо удалять маркер из хранилища, прежде чем записать новый
+        if ( obj.markers.markersStore.length > obj.markers.markersCount )
+        {
+          obj.markers.markersStore.pop();
+        }
+        obj.markers.markersStore.push(obj.userMarker);
       }
-      obj.markers.markersStore.push(obj.userMarker);
+      catch(e)
+      {
+        
+      }
 
       },
       error: function(error) {
@@ -181,7 +198,6 @@ function getMarkers(refresh)
         obj.markersCount = obj.markersStore.length;
         mainObject.preloader.deletePreloader(0);
       }
-      obj.setUserMarker();
 
       if ( refresh == undefined )
       {
