@@ -46,7 +46,7 @@ function selectCountRest()
       if (this.restCount != 0)
       {
         // если перед этим были рестораны - отображает панель о покидании ресторана
-        Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана', Ext.emptyFn);
+        Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана 0', Ext.emptyFn);
         this.restCount = 0;
         mainObject.menu.deletTabPanel();
         //TO DO --> Обсудить необходимость this.leaveRestPanel.createLRP();
@@ -64,7 +64,7 @@ function selectCountRest()
       if (this.restCount >= 1)
       {
         // если перед этим было несколько ресторанов, либо был другой ресторан
-        Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана', Ext.emptyFn);
+        Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана 1', Ext.emptyFn);
         this.leaveRestPanel.createLRP();
         mainObject.menu.getMenuType();
       }
@@ -83,7 +83,7 @@ function selectCountRest()
         // если перед этим был был другой ресторан
         this.restCount = this.restaurantStore.length;
         mainObject.menu.deletTabPanel();
-        Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана', Ext.emptyFn);
+        Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана мн', Ext.emptyFn);
         this.selectRestPanel.createSRP( this.restaurantStore );
       }
       else

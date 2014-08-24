@@ -42,10 +42,10 @@ function calcDist(lat1, long1, lat2, long2) {
 function updateRestStore()
 {
   setInterval(function(){
-    mainObject.map.markers.getMarkers();
+    mainObject.map.markers.getMarkers(true);
     mainObject.map.map.removeMarkers();
     mainObject.map.markers.createMarkers();
-  },40000);//1800000
+  },20000);//1800000
 }
 
 function intervalSearchRest()
