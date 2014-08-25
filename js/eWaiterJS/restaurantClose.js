@@ -43,7 +43,8 @@ function updateRestStore()
 {
   setInterval(function(){
     mainObject.map.markers.getMarkers(true);
-    mainObject.map.map.removeMarkers();
+    //mainObject.map.map.removeMarkers();
+    mainObject.map.markers.removeMarkersRest();
     mainObject.map.markers.createMarkers();
   },20000);//1800000
 }

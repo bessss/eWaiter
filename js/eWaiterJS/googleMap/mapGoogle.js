@@ -1,4 +1,4 @@
-$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/markers.js"></script>');
+//$('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/markers.js"></script>');
 $('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapInfoPanel.js"></script>');
 $('head').append('<script type="text/javascript" src="js/eWaiterJS/googleMap/mapSettingsPanel.js"></script>');
 
@@ -9,7 +9,7 @@ function mapGoogle()
   this.mapInfoPanel = new mapInfoPanel(this);
   this.mapSettingsPanel = new mapSettingsPanel(this);
   this.updateTimeRest = 10000;
-  this.updateTimeUser = 5000;
+  this.updateTimeUser = 10000;
   this.userMarker = null;
   this.latitude = 59.832991;
   this.longitude = 30.362699;

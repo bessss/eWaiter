@@ -2,6 +2,8 @@ function mapSettingsPanel(owner)
 {
   this.owner = owner;
   this.panel = undefined;
+  this.auto_center = null;
+  this.active_rest = null;
   
   this.intervalID = undefined;
 
@@ -12,10 +14,20 @@ function mapSettingsPanel(owner)
 
 function hideSettingsPanel()
 {
-  var values = mainObject.map.mapSettingsPanel.panel.getValues();
-  mainObject.map.mapSettingsPanel.changeMapSettings(values.auto_center, values.active_rest);
-  //Ext.Msg.alert(' Изменение настроек ','Настройки отображения карты изменены', Ext.emptyFn);
-  mainObject.map.mapSettingsPanel.panel.hide();
+  if ( $('#mapSettingsFormPanel').length > 0 )
+  {
+    if ( $('#mapSettingsFormPanel').css('display') != 'none' )
+    {
+      var values = mainObject.map.mapSettingsPanel.panel.getValues();
+
+      mainObject.map.mapSettingsPanel.auto_center = values.auto_center;
+      mainObject.map.mapSettingsPanel.active_rest = values.active_rest;
+
+      mainObject.map.mapSettingsPanel.changeMapSettings(values.auto_center, values.active_rest);
+      //Ext.Msg.alert(' Изменение настроек ','Настройки отображения карты изменены', Ext.emptyFn);
+      mainObject.map.mapSettingsPanel.panel.hide();
+    }
+  }
 }
 
 function changeMapSettings(auto_center,active_rest)
@@ -23,19 +35,17 @@ function changeMapSettings(auto_center,active_rest)
   mainObject.map.auto_center = auto_center;
   if ( active_rest == true )
   {
-    mainObject.map.markers.createActiveMarkers();
-    this.intervalID = setInterval(function(){mainObject.map.markers.createActiveMarkers()}, 18000);
+    mainObject.map.markers.createMarkers();
+    //this.intervalID = setInterval(function(){mainObject.map.markers.createActiveMarkers()}, 18000);
   }
   else
   {
-    clearInterval(mainObject.map.mapSettingsPanel.intervalID);// не хочет работать((((
-    this.intervalID = undefined;
-    mainObject.map.map.removeMarkers();
+    //clearInterval(mainObject.map.mapSettingsPanel.intervalID);// не хочет работать((((
+    //this.intervalID = undefined;
+    //mainObject.map.map.removeMarkers();
     mainObject.map.markers.createMarkers();
   }
 }
-
-
 
 function createSettingsPanel()
 {
