@@ -1,8 +1,8 @@
 function mapMarkers(owner)
 {
   this.owner = owner;
-  this.accuracyCircle = new Object();
-  this.availableCircle = new Object();
+  this.accuracyCircle = null;
+  this.availableCircle = null;
   this.markersStore = new Array();
   
   this.markersCount = 0;
@@ -33,8 +33,8 @@ function setUserMarker()
       obj.accuracy = position.coords.accuracy;
 
       try{
-        obj.accuracyCircle.setMap(null);
-        obj.availableCircle.setMap(null);
+        //obj.accuracyCircle.setMap(null);
+        //obj.availableCircle.setMap(null);
       }
       catch(e){}
 
@@ -53,7 +53,22 @@ function setUserMarker()
         obj.userMarker.setPosition(latlng);
       }
 
-      obj.availableCircle = obj.map.drawCircle({
+      if ( obj.markers.availableCircle == null )
+      {
+        obj.markers.availableCircle = new google.maps.Circle({
+          center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+          radius: position.coords.accuracy + 100,
+          fillColor: '#FFC973',
+          fillOpacity: 0.2,
+          strokeColor: '#FFC973',
+          strokeOpacity: 0.1,
+        });
+      }
+      else
+      {
+        
+      }
+      /*obj.markers.availableCircle = obj.map.drawCircle({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         radius: position.coords.accuracy + 100,
@@ -66,9 +81,9 @@ function setUserMarker()
           hideInfoPanel();
           hideSettingsPanel();
         }
-      });
+      });*/
 
-      obj.accuracyCircle = obj.map.drawCircle({
+      /*obj.accuracyCircle = obj.map.drawCircle({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         radius: position.coords.accuracy,
@@ -81,7 +96,7 @@ function setUserMarker()
           hideInfoPanel();
           hideSettingsPanel();
         }
-      });
+      });*/
 
       },
       error: function(error) {
