@@ -35,30 +35,22 @@ function setUserMarker()
       try{
         obj.accuracyCircle.setMap(null);
         obj.availableCircle.setMap(null);
-        //obj.userMarker.setMap(null);
-        //obj.map.removeMarker(obj.userMarker);
       }
       catch(e){}
 
       if ( obj.userMarker == null )
       {
-        obj.userMarker = obj.map.addMarker({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
+        obj.userMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
           id: 'userMarker',
-          title: 'Вы',
-          //icon: 'images/star.png',
-          click: function(e) {
-            //alert('Ваше местоположение');
-            hideInfoPanel();
-          }
+          map: obj.map.map
         });
       }
       else
       {
-        //var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        //console.log( obj.userMarker );
-        //obj.userMarker.setPosition(latlng);
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        console.log( 'obj.userMarker' );
+        obj.userMarker.setPosition(latlng);
       }
 
       obj.availableCircle = obj.map.drawCircle({
@@ -90,13 +82,6 @@ function setUserMarker()
           hideSettingsPanel();
         }
       });
-      
-      // необходимо удалять маркер из хранилища, прежде чем записать новый
-      if ( obj.markers.markersStore.length > obj.markers.markersCount )
-      {
-        //obj.markers.markersStore.pop();
-      }
-      //obj.markers.markersStore.push(obj.userMarker);
 
       },
       error: function(error) {
@@ -125,11 +110,11 @@ function createMarkers()
         var time_close = parseInt( this.markersStore[i]['time_close'] );
 
         if ( current_hours > time_open && current_hours < time_close )
-        {//alert('I: ' + i + ' 1');
+        {
           this.markersStore[i].setMap(this.owner.map.map);
         }
         else
-        {//alert('I: ' + i + ' 2');
+        {
           this.markersStore[i].setMap(null);
         }
       }
@@ -159,8 +144,7 @@ function setMarkers(markers)
       time_open: markers[i]['timeOpen'],
       time_close: markers[i]['timeClose'],
       id: 'marker_' + i,
-      icon: 'images/' + markers[i]['cssName']+'.png',
-      
+      icon: 'images/' + markers[i]['cssName']+'.png'
     });
   }
 }
@@ -176,7 +160,6 @@ function getMarkers(refresh)
       if ( response.responseText != '' )
       {
         var temp = Ext.decode(response.responseText);
-        //obj.markersStore = temp['restaurant'];
         obj.setMarkers( temp['restaurant'] );
         obj.markersCount = obj.markersStore.length;
         obj.updateTimeRest = temp['updateTimeRest'];
