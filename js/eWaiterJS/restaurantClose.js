@@ -43,18 +43,17 @@ function updateRestStore()
 {
   setInterval(function(){
     mainObject.map.markers.getMarkers(true);
-    //mainObject.map.map.removeMarkers();
     mainObject.map.markers.removeMarkersRest();
     mainObject.map.markers.createMarkers();
-  },20000);//1800000
+  },1800000);//1800000
 }
 
 function intervalSearchRest()
-{console.log('interval');
+{
   var obj = this;
   var tempArray = new Array();
 
-  mainObject.map.accuracy = 40;
+  //mainObject.map.accuracy = 40;
 
   for ( var i = 0; i < obj.store.length; ++i )
   {
@@ -112,17 +111,15 @@ function intervalSearchRest()
 function searchRest(userInput)
 {
   mainObject.selectRestaurant.userInput = userInput;
-  var tempArray = new Array();//alert( this.store.length );
+  var tempArray = new Array();
 
-  mainObject.map.accuracy = 40;
+  //mainObject.map.accuracy = 40;
 
   for ( var i = 0; i < this.store.length; ++i )
   {
     var tempDist = this.calcDist( mainObject.map.latitude, mainObject.map.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );
-    //alert('tempDist: ' + tempDist + ' сумма:' + (this.store[i]['accuracy'] + mainObject.map.accuracy) );
     if ( ( parseFloat(this.store[i]['accuracy']) + mainObject.map.accuracy ) >= tempDist )
     {
-      //alert('Ресторан: ' + obj.store[i]['shotName'] + ' tempDist:' + tempDist + ' сумма: ' + ( parseFloat(obj.store[i]['accuracy']) + mainObject.map.accuracy ) );
       tempArray.push( this.store[i] );
     }
   }

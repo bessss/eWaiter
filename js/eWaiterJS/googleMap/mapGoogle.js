@@ -9,7 +9,7 @@ function mapGoogle()
   this.mapInfoPanel = new mapInfoPanel(this);
   this.mapSettingsPanel = new mapSettingsPanel(this);
   this.updateTimeRest = 10000;
-  this.updateTimeUser = 10000;
+  this.updateTimeUser = 6000;
   this.userMarker = null;
   this.latitude = 59.832991;
   this.longitude = 30.362699;
@@ -25,8 +25,6 @@ function mapGoogle()
 
   this.createMapPanel();
   this.createMap();
-  //this.markers.setUserMarker();
-  //this.markers.getMarkers();
 }
 
 function createMapPanel()
@@ -53,13 +51,6 @@ function overridePosition()
       
       mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
 
-      /*if ( Ext.get('selectRestPanel') == null )
-      {
-        //Запуск выбора
-        //mainObject.selectRestaurant.getRestaurants();
-        mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
-      }*/
-
       for ( var i = 0; i < obj.markers.length; ++i )
       {
         if (obj.markers[i]['title'] == 'Вы')
@@ -82,7 +73,7 @@ function overridePosition()
   {
     obj.map.setCenter(obj.latitude,obj.longitude,5);
   }
-  }, 15000);//obj.updateTimeRest);
+  }, obj.updateTimeRest);
 }
 
 function reCreateMap()
@@ -156,8 +147,6 @@ function createMap()
         obj.accuracy = position.coords.accuracy;
         //Запуск выбора
         mainObject.preloader.setPreText('Поиск ресторанов');
-        //mainObject.selectRestaurant.getRestaurants();
-        //mainObject.selectRestaurant.restaurantClose.searchRest();
         obj.markers.getMarkers();
         obj.overridePosition();
       },

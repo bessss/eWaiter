@@ -32,81 +32,59 @@ function setUserMarker()
       obj.longitude = position.coords.longitude;
       obj.accuracy = position.coords.accuracy;
 
-      try{
-        //obj.accuracyCircle.setMap(null);
-        //obj.availableCircle.setMap(null);
-      }
-      catch(e){}
+      var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
       if ( obj.userMarker == null )
       {
         obj.userMarker = new google.maps.Marker({
-          position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+          position: latlng,
           id: 'userMarker',
           map: obj.map.map
         });
       }
       else
       {
-        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        console.log( 'obj.userMarker' );
         obj.userMarker.setPosition(latlng);
       }
 
       if ( obj.markers.availableCircle == null )
       {
         obj.markers.availableCircle = new google.maps.Circle({
-          center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+          center: latlng,
           radius: position.coords.accuracy + 100,
           fillColor: '#FFC973',
           fillOpacity: 0.2,
           strokeColor: '#FFC973',
           strokeOpacity: 0.1,
+          map: obj.map.map
+        });
+
+        obj.markers.accuracyCircle = new google.maps.Circle({
+          center: latlng,
+          radius: position.coords.accuracy,
+          fillColor: '#FFB540',
+          fillOpacity: 0.2,
+          strokeColor: '#92b8db',
+          strokeOpacity: 0.1,
+          map: obj.map.map
         });
       }
       else
       {
-        
+        obj.markers.availableCircle.setPosition(latlng);
+        obj.markers.availableCircle.setRadius(position.coords.accuracy + 100);
+        obj.markers.accuracyCircle.setPosition(latlng);
+        obj.markers.availableCircle.setRadius(position.coords.accuracy);
       }
-      /*obj.markers.availableCircle = obj.map.drawCircle({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        radius: position.coords.accuracy + 100,
-        fillColor: '#FFC973',
-        fillOpacity: 0.2,
-        strokeColor: '#FFC973',
-        strokeOpacity: 0.1,
-        click: function(e) {
-          //alert('Доступны рестраны в пределах этого круга');
-          hideInfoPanel();
-          hideSettingsPanel();
-        }
-      });*/
 
-      /*obj.accuracyCircle = obj.map.drawCircle({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        radius: position.coords.accuracy,
-        fillColor: '#FFB540',
-        fillOpacity: 0.2,
-        strokeColor: '#92b8db',//FFB540',
-        strokeOpacity: 0.1,
-        click: function(e) {
-          //alert('Точность позиционирования: ' + accuracy + ' метров');
-          hideInfoPanel();
-          hideSettingsPanel();
-        }
-      });*/
-
-      },
-      error: function(error) {
-        alert('Geolocation failed: ' + error.message);
-      },
-      not_supported: function(){
-        alert('Определение местоположения не поддерживается');
-      }
-    });
-  }, obj.updateTimeUser);
+    },
+    error: function(error) {
+      alert('Geolocation failed: ' + error.message);
+    },
+    not_supported: function(){
+      alert('Определение местоположения не поддерживается');
+    }
+  });}, obj.updateTimeUser);
 }
 
 function createMarkers()
