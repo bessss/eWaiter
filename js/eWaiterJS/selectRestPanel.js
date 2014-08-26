@@ -68,7 +68,7 @@ function createSRP(restaurantStore)
         title: 'Доступные рестораны',
         style: {
         'border-radius': '0.6125em 0.6125em 0em 0em',
-        'background-color': 'blue'
+        'background-color': '#3914AF'
         }
       },
       {
@@ -83,7 +83,8 @@ function createSRP(restaurantStore)
           'border-radius': '0em 0em 0.6125em 0.6125em',
         },
         styleHtmlContent: 'border-radius: 0em 0em 0.6125em 0.6125em;',
-        itemTpl: '<div>{shotName}</div>',
+        itemTpl: '<div style="text-align: center;font-size: 14px;">{shotName}</div>\
+                  <div style="text-align: center;font-size: 12px;">({adress})</div>',
         data: mainObject.selectRestaurant.restaurantStore,
         listeners: {
                 itemtap: function (list, idx, target, record, evt) {

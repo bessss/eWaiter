@@ -5,22 +5,23 @@
 
 /* Tab panel background color */
 .x-tab {
-    background: none repeat scroll 0 0 #3A3A3A;
-    border: 0 none;
-    flex-direction: column;
-    height: 3.2em;
-    padding: 0 1em;
+  background: none repeat scroll 0 0 #3A3A3A;
+  border: 0 none;
+  flex-direction: column;
+  height: 3.2em;
+  padding: 0 1em;
 }
 
 .x-button-label, .x-badge {
-    color: #FFFFFF;
-    font-size: 12pt;
+  color: #FFFFFF;
+  font-size: 12pt;
 }
 
 #title 
 {
   background-color: #3b5998;
-  background-image: url(../images/default_bg_title.png) !important;
+  /*background-image: url(../images/default_bg_title.png) !important;*/
+  background-color: '#3914AF';
   border-bottom: 1px solid #999999;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
   color: #f7f7f7;
@@ -31,7 +32,7 @@
 /* LeftPanel buttons */
 #leftPanel{
   margin-top: 40px;
-  background-color: #6699FF;
+  background-color: #6A48D7/*#6699FF*/;
 }
 
 #iconRest{
@@ -39,13 +40,13 @@
 }
 
 #leftPanel div.x-inner{
-  background: none repeat scroll 0 0 #6699FF !important;
+  background: none repeat scroll 0 0 /*#6699FF*/#8b9dc3 !important;
 }
 
 #leftPanel .x-button{
   font-size: 12px;
   color: #f7f7f7;
-  background-color: #6E4A28 !important;
+  background-color: /*#6E4A28*/#6C8CD5 !important;
 }
 
 #sliderRightButton{
