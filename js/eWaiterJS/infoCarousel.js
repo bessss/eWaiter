@@ -17,7 +17,7 @@ function createIC()
     defaults: {
         styleHtmlContent: true
     },
-    style: 'display: none;background-image: url(\'images/slider/Test_fon.jpg\');background-size: cover;',
+    style: 'background-image: url(\'images/slider/Test_fon.jpg\');background-size: cover;position: absolute; top: 0px;left: 0px;z-index: 5000;',
     items: [
         {
           html : '<div class="slider_table" style="width: ' + $(document).width() + 'px;height: ' + tempHeight + 'px;">\

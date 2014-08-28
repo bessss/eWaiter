@@ -20,7 +20,7 @@ function mapGoogle()
 
   this.createMapPanel = createMapPanel;
   this.overridePosition = overridePosition;
-  this.reCreateMap = reCreateMap;
+  this.reMap = reMap;
   this.createMap = createMap;
 
   this.createMapPanel();
@@ -33,8 +33,7 @@ function createMapPanel()
     width: $(document).width() + 'px',
     height: $(document).height() - Ext.get('title').getHeight() + 'px',
     id: 'mapPanel',
-    html: '',
-    style: 'visibility: hidden;'
+    style: 'position: absolute; top: 0px;left: 0px;z-index: 5001;'
   });
   Ext.getCmp('mainContainer').add( Ext.getCmp('mapPanel') );
 }
@@ -76,51 +75,48 @@ function overridePosition()
   }, obj.updateTimeRest);
 }
 
-function reCreateMap()
+function reMap()
 {
   var obj = this;
+
   this.map = new GMaps({
     div: '#mapPanel',
     lat: obj.latitude,
     lng: obj.longitude,
     click: function(e) {
       hideInfoPanel();
-      hideSettingsPanel();
     }
   });
 
   this.map.addControl({
-  position: 'right_bottom',
-  id: 'home_but',
-  content: '',
-  style: {
-    width: '40px',
-    height: '40px',
-    margin: '5px'
-  },
-  events: {
-    click: function(){
-      mainObject.map.map.setCenter(obj.latitude,obj.longitude,5);
-    }
+    position: 'right_bottom',
+    id: 'home_but',
+    content: '',
+    style: {
+      width: '40px',
+      height: '40px',
+      margin: '5px'
+    },
+    events: {
+      click: function(){
+        mainObject.map.map.setCenter(obj.latitude,obj.longitude,5);
+      }
   }});
 
   this.map.addControl({
-  position: 'right_top',
-  id: 'gear_but',
-  content: '',
-  style: {
-    width: '40px',
-    height: '40px',
-    margin: '5px'
-  },
-  events: {
-    click: function(){
-      createSettingsPanel(this);
-    }
+    position: 'right_top',
+    id: 'gear_but',
+    content: '',
+    style: {
+      width: '40px',
+      height: '40px',
+      margin: '5px'
+    },
+    events: {
+      click: function(){
+        createSettingsPanel(this);
+      }
   }});
-
-  this.markers.createMarkers();
-  this.markers.userMarker();
 }
 
 function createMap()
@@ -128,24 +124,15 @@ function createMap()
  //mainObject.preloader.setPreText('Определение местоположения');
   var obj = this;
 
-  this.map = new GMaps({
-    div: '#mapPanel',
-    lat: 59.8833,
-    lng: 30.2167,
-    click: function(e) {
-      hideInfoPanel();
-    }
-  });
-
-  Ext.getCmp('mapPanel').setStyle({'display':'none','visibility':'visible'});
-
   GMaps.geolocate({
       success: function(position) {
         obj.latitude = position.coords.latitude;
         obj.longitude = position.coords.longitude;
         obj.accuracy = position.coords.accuracy;
+        obj.reMap();
         //Запуск выбора
         mainObject.preloader.setPreText('Поиск ресторанов');
+        mainObject.map.markers.userMarker();
         obj.markers.getMarkers();
         obj.overridePosition();
       },

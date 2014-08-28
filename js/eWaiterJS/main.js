@@ -32,52 +32,51 @@ function selectMenu(name)
       this.curentPage = 'Где доступен сервис';
       if ( Ext.getCmp('tabPanel') != undefined )
       {
-        Ext.getCmp('tabPanel').setStyle({'display':'none'});
+        Ext.getCmp('tabPanel').setStyle({'z-index':'5000'});
       }
-      Ext.getCmp('defaultPanel').setStyle({'display':'none'});
-      Ext.getCmp('mapPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
-      Ext.getCmp('infoCarousel').setStyle({'display':'none'});
-      mainObject.map.reCreateMap();
+      Ext.getCmp('defaultPanel').setStyle({'z-index':'5001'});
+      Ext.getCmp('infoCarousel').setStyle({'z-index':'5002'});
+      Ext.getCmp('mapPanel').setStyle({'z-index':'5003'});
       break;
     }
     case 'menu':
     {
-      Ext.getCmp('mapPanel').setStyle({'display':'none'});
-      Ext.getCmp('defaultPanel').setStyle({'display':'none'});
-      Ext.getCmp('infoCarousel').setStyle({'display':'none'});
+      Ext.getCmp('defaultPanel').setStyle({'z-index':'5000'});
+      Ext.getCmp('infoCarousel').setStyle({'z-index':'5001'});
       this.curentPage = 'Меню ресторана';
       if ( Ext.getCmp('tabPanel') != undefined )
       {
-        Ext.getCmp('tabPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
+        Ext.getCmp('tabPanel').setStyle({'z-index':'5003'});
       }
       else
       {
-        Ext.getCmp('defaultPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
+        Ext.getCmp('defaultPanel').setStyle({'z-index':'5003'});
       }
+      Ext.getCmp('mapPanel').setStyle({'z-index':'5002'});
       break;
     }
     case 'defaultPanel':
     {
       this.curentPage = 'Страница по умолчанию';
-      Ext.getCmp('defaultPanel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px'});
-      Ext.getCmp('infoCarousel').setStyle({'display':'none'});
+      Ext.getCmp('defaultPanel').setStyle({'z-index':'5003'});
+      Ext.getCmp('infoCarousel').setStyle({'z-index':'5000'});
       if ( Ext.getCmp('tabPanel') != undefined )
       {
-        Ext.getCmp('tabPanel').setStyle({'display':'none'});
+        Ext.getCmp('tabPanel').setStyle({'z-index':'5001'});
       }
-      Ext.getCmp('mapPanel').setStyle({'display':'none'});
+      Ext.getCmp('mapPanel').setStyle({'z-index':'5002'});
       break;
     }
     case 'infoCarousel':
     {
       this.curentPage = 'Как пользоваться сервисом';
-      Ext.getCmp('mapPanel').setStyle({'display':'none'});
-      Ext.getCmp('defaultPanel').setStyle({'display':'none'});
+      Ext.getCmp('mapPanel').setStyle({'z-index':'5000'});
+      Ext.getCmp('defaultPanel').setStyle({'z-index':'5001'});
       if ( Ext.getCmp('tabPanel') != undefined )
       {
-        Ext.getCmp('tabPanel').setStyle({'display':'none'});
+        Ext.getCmp('tabPanel').setStyle({'z-index':'5002'});
       }
-      Ext.getCmp('infoCarousel').setStyle({'display':'block','width': $(document).width() + 'px','height': $(document).height() - Ext.get('title').getHeight() + 'px','visibility': 'visible'});
+      Ext.getCmp('infoCarousel').setStyle({'z-index':'5003'});
       break;
     }
   }

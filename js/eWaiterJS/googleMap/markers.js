@@ -23,7 +23,7 @@ function removeMarkersRest()
   }
 }
 
-function userMarker()
+function userMarker(auto)
 {
   var latlng = new google.maps.LatLng(mainObject.map.latitude, mainObject.map.longitude);
 
@@ -40,10 +40,11 @@ function userMarker()
     mainObject.map.userMarker.setPosition(latlng);
   }
 
-  if ( mainObject.map.markers.availableCircle == null )
+  if ( mainObject.map.markers.availableCircle == null && auto == undefined )
   {
     mainObject.map.markers.availableCircle = new google.maps.Circle({
       center: latlng,
+      id: 'availableCircle',
       radius: mainObject.map.accuracy + 100,
       fillColor: '#FFC973',
       fillOpacity: 0.2,
@@ -64,9 +65,9 @@ function userMarker()
   }
   else
   {
-    mainObject.map.markers.availableCircle.setPosition(latlng);
+    mainObject.map.markers.availableCircle.setCenter(latlng);
     mainObject.map.markers.availableCircle.setRadius(mainObject.map.accuracy + 100);
-    mainObject.map.markers.accuracyCircle.setPosition(latlng);
+    mainObject.map.markers.accuracyCircle.setCenter(latlng);
     mainObject.map.markers.accuracyCircle.setRadius(mainObject.map.accuracy);
   }
 }
@@ -80,7 +81,7 @@ function setUserMarker()
       mainObject.map.latitude = position.coords.latitude;
       mainObject.map.longitude = position.coords.longitude;
       mainObject.map.accuracy = position.coords.accuracy;
-      mainObject.map.markers.userMarker();
+      mainObject.map.markers.userMarker(true);
     },
     error: function(error) {
       alert('Geolocation failed: ' + error.message);
@@ -93,7 +94,7 @@ function setUserMarker()
 
 function createMarkers()
 {
-  console.log('бработка маркеров...');
+  console.log('обработка маркеров...');
   var obj = this;
   var current_time = new Date();
   var current_hours = current_time.getHours();
@@ -163,6 +164,7 @@ function getMarkers(refresh)
         obj.updateTimeUser = temp['updateTimeUser'];
 
         mainObject.selectRestaurant.restaurantClose.store = temp['restaurant'];
+        mainObject.map.markers.createMarkers();
       }
       else
       {

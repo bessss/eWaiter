@@ -88,7 +88,8 @@ function create_menuType()
         pack : 'center',
         align: 'center'
       }
-    }
+    },
+    style: 'position: absolute; top: 0px;left: 0px;z-index: 5003;'
   });
 
   Ext.getCmp('mainContainer').add( Ext.getCmp('tabPanel') );
