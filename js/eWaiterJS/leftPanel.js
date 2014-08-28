@@ -64,15 +64,11 @@ function createLeftPanel()
         iconCls: 'changeResT',
         handler: function()
         {
-          //if ( Ext.get('selectRestPanel') == null )
-          //{
-            autoSlideCarousel($(document).width()*-1,0);
-            //Ext.getCmp('menuRest').setHidden(true);
-            //mainObject.selectRestaurant.getRestaurants(true);
-            mainObject.selectRestaurant.restCount = 0;
-            mainObject.selectRestaurant.selectRestPanel.deleteSRP();
-            mainObject.selectRestaurant.restaurantClose.searchRest(true);
-          //}
+          mainObject.selectRestaurant.userSelect = false;
+          autoSlideCarousel($(document).width()*-1,0);
+          mainObject.selectRestaurant.restCount = 0;
+          mainObject.selectRestaurant.selectRestPanel.deleteSRP();
+          mainObject.selectRestaurant.restaurantClose.searchRest(true);
       }},
       {
         xtype: 'button',

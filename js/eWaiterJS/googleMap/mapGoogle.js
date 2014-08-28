@@ -102,8 +102,7 @@ function reCreateMap()
     click: function(){
       mainObject.map.map.setCenter(obj.latitude,obj.longitude,5);
     }
-  }
-});
+  }});
 
   this.map.addControl({
   position: 'right_top',
@@ -118,10 +117,10 @@ function reCreateMap()
     click: function(){
       createSettingsPanel(this);
     }
-  }
-});
+  }});
 
   this.markers.createMarkers();
+  this.markers.userMarker();
 }
 
 function createMap()

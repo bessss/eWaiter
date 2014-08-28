@@ -4,13 +4,14 @@ function selectRestaurant()
 {
   this.restaurantStore = new Object();
   this.selectRestPanel = new selectRestPanel();
-  //this.leaveRestPanel = new leaveRestPanel();
   this.restaurantClose = new restaurantClose();
   this.idRest = null;
   this.checkRest = false;
   this.userInput = undefined;
   this.restCount = 0; // счетчик количества ресторанов
   this.restTitle = ''; // название ресторана для левого меню
+  this.userSelect = false;
+
   this.getRestaurants = getRestaurants;
   this.affordabilityAnalysis = affordabilityAnalysis;
   this.checkRestaurant = checkRestaurant;
@@ -56,6 +57,7 @@ function selectCountRest()
     case 1:
     {
       this.idRest = this.restaurantStore[0]['idRestaurant'];
+      this.userSelect = true;
       $('.cssOver').remove();
       $('head').append('<link rel="stylesheet" type="text/css" href="css/restaurant_' + this.restaurantStore[0]['cssName'] + '.css" class="cssOver" />');
       $('#menuLogo').html('<img src="http://ewaiter.info/application/images/'+this.restaurantStore[0]['cssName']+'_theme_logo.png" />');
@@ -65,7 +67,7 @@ function selectCountRest()
       {
         // если перед этим было несколько ресторанов, либо был другой ресторан
         Ext.Msg.alert('Внимание !', 'Вы вне зоны действия ресторана 1', Ext.emptyFn);
-        this.leaveRestPanel.createLRP();
+        this.selectRestPanel.createSRP();
         mainObject.menu.getMenuType();
       }
       else

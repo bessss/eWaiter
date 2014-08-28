@@ -12,6 +12,7 @@ function mapMarkers(owner)
   this.getMarkers = getMarkers;
   this.removeMarkersRest = removeMarkersRest;
   this.setMarkers = setMarkers;
+  this.userMarker = userMarker;
 }
 
 function removeMarkersRest()
@@ -22,61 +23,64 @@ function removeMarkersRest()
   }
 }
 
+function userMarker()
+{
+  var latlng = new google.maps.LatLng(mainObject.map.latitude, mainObject.map.longitude);
+
+  if ( mainObject.map.userMarker == null )
+  {
+    mainObject.map.userMarker = new google.maps.Marker({
+      position: latlng,
+      id: 'userMarker',
+      map: mainObject.map.map.map
+    });
+  }
+  else
+  {
+    mainObject.map.userMarker.setPosition(latlng);
+  }
+
+  if ( mainObject.map.markers.availableCircle == null )
+  {
+    mainObject.map.markers.availableCircle = new google.maps.Circle({
+      center: latlng,
+      radius: mainObject.map.accuracy + 100,
+      fillColor: '#FFC973',
+      fillOpacity: 0.2,
+      strokeColor: '#FFC973',
+      strokeOpacity: 0.1,
+      map: mainObject.map.map.map
+    });
+
+    mainObject.map.markers.accuracyCircle = new google.maps.Circle({
+      center: latlng,
+      radius: mainObject.map.accuracy,
+      fillColor: '#FFB540',
+      fillOpacity: 0.2,
+      strokeColor: '#92b8db',
+      strokeOpacity: 0.1,
+      map: mainObject.map.map.map
+    });
+  }
+  else
+  {
+    mainObject.map.markers.availableCircle.setPosition(latlng);
+    mainObject.map.markers.availableCircle.setRadius(mainObject.map.accuracy + 100);
+    mainObject.map.markers.accuracyCircle.setPosition(latlng);
+    mainObject.map.markers.accuracyCircle.setRadius(mainObject.map.accuracy);
+  }
+}
+
 function setUserMarker()
 {
   var obj = this.owner;
   setInterval(function(){
     GMaps.geolocate({
       success: function(position) {
-      obj.latitude = position.coords.latitude;
-      obj.longitude = position.coords.longitude;
-      obj.accuracy = position.coords.accuracy;
-
-      var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-      if ( obj.userMarker == null )
-      {
-        obj.userMarker = new google.maps.Marker({
-          position: latlng,
-          id: 'userMarker',
-          map: obj.map.map
-        });
-      }
-      else
-      {
-        obj.userMarker.setPosition(latlng);
-      }
-
-      if ( obj.markers.availableCircle == null )
-      {
-        obj.markers.availableCircle = new google.maps.Circle({
-          center: latlng,
-          radius: position.coords.accuracy + 100,
-          fillColor: '#FFC973',
-          fillOpacity: 0.2,
-          strokeColor: '#FFC973',
-          strokeOpacity: 0.1,
-          map: obj.map.map
-        });
-
-        obj.markers.accuracyCircle = new google.maps.Circle({
-          center: latlng,
-          radius: position.coords.accuracy,
-          fillColor: '#FFB540',
-          fillOpacity: 0.2,
-          strokeColor: '#92b8db',
-          strokeOpacity: 0.1,
-          map: obj.map.map
-        });
-      }
-      else
-      {
-        obj.markers.availableCircle.setPosition(latlng);
-        obj.markers.availableCircle.setRadius(position.coords.accuracy + 100);
-        obj.markers.accuracyCircle.setPosition(latlng);
-        obj.markers.availableCircle.setRadius(position.coords.accuracy);
-      }
-
+      mainObject.map.latitude = position.coords.latitude;
+      mainObject.map.longitude = position.coords.longitude;
+      mainObject.map.accuracy = position.coords.accuracy;
+      mainObject.map.markers.userMarker();
     },
     error: function(error) {
       alert('Geolocation failed: ' + error.message);
