@@ -76,6 +76,7 @@ function setUserMarker()
 {
   var obj = this.owner;
   setInterval(function(){
+console.profile('цикл: setUserMarker');
     GMaps.geolocate({
       success: function(position) {
       mainObject.map.latitude = position.coords.latitude;
@@ -89,7 +90,7 @@ function setUserMarker()
     not_supported: function(){
       alert('Определение местоположения не поддерживается');
     }
-  });}, obj.updateTimeUser);
+  });console.profileEnd();}, mainObject.map.markers.updateTimeUser);
 }
 
 function createMarkers()

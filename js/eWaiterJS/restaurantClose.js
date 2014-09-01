@@ -50,6 +50,7 @@ function updateRestStore()
 
 function intervalSearchRest()
 {
+console.profile('цикл: intervalSearchRest');
   var obj = this;
   var tempArray = new Array();
 
@@ -106,6 +107,7 @@ function intervalSearchRest()
   {
     Ext.getCmp('changeResT').setHidden(true);
   }
+console.profileEnd();
 }
 
 function searchRest(userInput)

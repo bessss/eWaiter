@@ -50,7 +50,7 @@ function overridePosition()
       
       mainObject.selectRestaurant.restaurantClose.intervalSearchRest();
 
-      for ( var i = 0; i < obj.markers.length; ++i )
+      /*for ( var i = 0; i < obj.markers.length; ++i )
       {
         if (obj.markers[i]['title'] == 'Вы')
         {
@@ -59,7 +59,7 @@ function overridePosition()
           obj.latitude = position.coords.latitude;
           obj.longitude = position.coords.longitude;
         }
-      }
+      }*/
       },
       error: function(error) {
         alert('Geolocation failed: ' + error.message);
@@ -68,11 +68,11 @@ function overridePosition()
         alert('Определение местоположения не поддерживается');
       }
   });
+
   if (obj.auto_center == true)
   {
     obj.map.setCenter(obj.latitude,obj.longitude,5);
-  }
-  }, obj.updateTimeRest);
+  }}, mainObject.map.markers.updateTimeRest);
 }
 
 function reMap()
