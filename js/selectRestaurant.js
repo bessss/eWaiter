@@ -36,7 +36,7 @@ function updateRest()
         }
       }
     });
-  },15000);//obj.updateTimeRest);
+  },obj.updateTimeRest);
 }
 
 function checkRestaurant()

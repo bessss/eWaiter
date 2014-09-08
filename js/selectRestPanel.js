@@ -17,6 +17,7 @@ function selectRestPanel()
 function createPanel(restStore,user)
 {
   var obj = this;
+  LP.deleteLoadPanel();
 
   if ( user == undefined )
   {
@@ -28,6 +29,7 @@ function createPanel(restStore,user)
       {
         SRP.options.visible = false;
         selectRest.idRest = this._options.idRestaurant;
+        MMT.getMenu();
       }
     }
   }

@@ -31,7 +31,7 @@ function mapGoogle()
 
 function createMap()
 {
-  var obj = this;console.log($('#mapView'));
+  var obj = this;
   this.map = $('#mapView').dxMap( obj.options );
 }
 
@@ -54,12 +54,17 @@ function updateUserPosition()
 
 function getPosition()
 {
+  LP.createLoadPanel('Определение местоположения');
+
   navigator.geolocation.getCurrentPosition(function(position) {
     mapObject.latitude = position.coords.latitude;
     mapObject.longitude = position.coords.longitude;
     mapObject.accuracy = position.coords.accuracy;
     mapObject.setPosition();
     mapObject.getMarkers();
+  },
+  function(){
+    LP.deleteLoadPanel();
   });
 }
 
@@ -87,11 +92,19 @@ function setMarkers(markers)
 
 function getMarkers(auto)
 {
+  if ( auto == undefined )
+  {
+    LP.createLoadPanel('Получение списка ресторанов');
+  }
+
   var obj = this;
   $.ajax({
     type: "POST",
     url: "http://admin.ewaiter.info/outputs/outputRestaurantCoordinates.php",
     data: "name=John&location=Boston",
+    error: function(){
+      LP.deleteLoadPanel();
+    },
     success: function(msg){
       if ( msg != '' )
       {
@@ -115,7 +128,11 @@ function getMarkers(auto)
   });
 }
 
-var mapObject = new mapGoogle();
+var mapObject = new Object();
+
+$( document ).ready(function(){
+  mapObject = new mapGoogle();
+});
 
 MyApp.where = function (params) {
   var viewModel = {

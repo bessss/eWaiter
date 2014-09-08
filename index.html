@@ -16,38 +16,44 @@
 <script type="text/javascript" src="jslib/support/knockout-3.1.0.js"></script>
 <script type="text/javascript" src="jslib/support/globalize.min.js"></script>
 <script type="text/javascript" src="jslib/14.1.6/dx.phonejs.js"></script>
-<!-- eWater JS -->
-<script type="text/javascript" src="js/restaurantClose.js"></script>
-<script type="text/javascript" src="js/selectRestPanel.js"></script>
-<script type="text/javascript" src="js/selectRestaurant.js"></script>
-<script type="text/javascript" src="js/mainObject.js"></script>
 <!-- Layouts -->
 <script type="text/javascript" src="jslib/14.1.6/layouts/SlideOut/SlideOutLayout.js"></script>
 <link rel="stylesheet" type="text/css" href="jslib/14.1.6/layouts/SlideOut/SlideOutLayout.css" />
 <link rel="dx-template" type="text/html" href="jslib/14.1.6/layouts/SlideOut/SlideOutLayout.html"/>
-<!-- App models -->
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="models/where.js"></script>
 <!-- App templates -->
 <link rel="dx-template" type="text/html" href="templates/home.html" />
 <link rel="dx-template" type="text/html" href="templates/where.html" />
-</head>
-<body>
-<div class="dx-viewport"></div>
-<div id="selectRestPanel"></div>
-
+<link rel="dx-template" type="text/html" href="templates/MMT.html" />
+<!-- App models -->
+<script type="text/javascript" src="js/index.js"></script>
+<!-- eWater JS -->
+<script type="text/javascript" src="js/loadPanel.js"></script>
+<script type="text/javascript" src="js/restaurantClose.js"></script>
+<script type="text/javascript" src="js/selectRestPanel.js"></script>
+<script type="text/javascript" src="js/selectRestaurant.js"></script>
+<script type="text/javascript" src="js/menuMenuType.js"></script>
+<script type="text/javascript" src="models/where.js"></script>
+<script type="text/javascript" src="js/mainObject.js"></script>
 <style type="text/css">
-div.dx-scrollview-content > div:first-child{
+#nav >:first-child{
   background-image: url('http://ewaiter.info/application/images/default_theme_logo.png');
   background-repeat: no-repeat;
   background-position: center;
   height: 148px;
 }
-
+.dx-pivottabs-tab span, .dx-pivottabs-ghosttab span{
+  font-size: 14px;
+}
 div.dx-popup-content{
   max-height: 300px;
   overflow-y: auto;
 }
 </style>
+</head>
+<body>
+<div class="dx-viewport"></div>
+<div id="selectRestPanel"></div>
+<div id="loadPanel"></div>
+<div id="toastPanel"></div>
 </body>
 </html>

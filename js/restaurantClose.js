@@ -80,25 +80,23 @@ function intervalSearchRest()
         //Если активна панель выбора
         if ( selectRest.restCount != tempArray.length )
         {
-          //mainObject.selectRestaurant.selectRestPanel.deleteSRP();
-          selectRest.selectCountRest();
+          SRP.createPanel( tempArray );
+          //selectRest.selectCountRest();
         }
       }
     }
     else
     {
       //Если не находимся в текущем ресторане
-      /*mainObject.selectRestaurant.selectRestPanel.deleteSRP();
-      mainObject.menu.deletTabPanel();
-      mainObject.selectRestaurant.restCount = 0;
-      mainObject.selectRestaurant.selectCountRest();
-      mainObject.selectRestaurant.restCount = tempArray.length;*/
+      selectRest.selectCountRest();
     }
   }
   else
   {
-    //Ext.getCmp('changeResT').setHidden(true);
+    MyApp.app.navigation[2].option("visible", false);
   }
+
+  selectRest.restCount = tempArray.length;
 }
 
 function searchRest(markersStore)
@@ -115,6 +113,8 @@ function searchRest(markersStore)
       tempArray.push( this.store[i] );
     }
   }
+
+  selectRest.restCount = tempArray.length;
 
   if ( tempArray.length > 0 )
   {
