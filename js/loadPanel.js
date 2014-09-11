@@ -43,7 +43,9 @@ function createToastMessage(message,displayTime,status)
   this.toastOptions.displayTime = displayTime;
   $('#toastPanel').dxToast( obj.toastOptions );
 
-  setTimeout(function(){obj.deleteToastMessage();},displayTime);
+  setTimeout(function(){
+    obj.deleteToastMessage();
+  },displayTime);
 }
 
 function deleteToastMessage()

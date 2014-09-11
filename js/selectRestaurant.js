@@ -8,7 +8,8 @@ function selectRestaurant()
   this.checkRest = false;
   //this.userInput = undefined;//TODO: нужен ли ?
   this.restCount = 0; // счетчик количества ресторанов
-  //this.restTitle = ''; // название ресторана для левого меню //TODO: нужен ли ?
+  this.restTitle = ''; // название ресторана для левого меню
+  this.cssName = 'default';
   //this.userSelect = false;//TODO: нужен ли ?
 
   this.updateRest = updateRest;
@@ -36,7 +37,7 @@ function updateRest()
         }
       }
     });
-  },obj.updateTimeRest);
+  },30000);//obj.updateTimeRest);
 }
 
 function checkRestaurant()

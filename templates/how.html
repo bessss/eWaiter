@@ -1,0 +1,38 @@
+<script type="text/javascript">
+galleryDataSource = new DevExpress.data.DataSource([
+  {
+    src: "images/slider/pic_1.png",
+    topText: "pic_1",
+    bottomText: 28
+  },
+  {
+    src: "images/slider/pic_2.png",
+    topText: "pic_2",
+    bottomText: 26
+  },
+  {
+    src: "images/slider/pic_3.png",
+    topText: "pic_3",
+    bottomText: 30
+  },
+  {
+    src: "images/slider/pic_4.png",
+    topText: "pic_4",
+    bottomText: 24
+  }
+]);
+</script>
+<div data-options="dxView : { name: 'how', title: 'How' } ">
+	<div class="gallery"
+		data-bind="dxGallery: { dataSource: galleryDataSource }">
+		<div data-options="dxTemplate: { name: 'item' }">
+			<!-- <p style="margin-top: 20px;"><span data-bind="text: topText"></span></p>-->
+			<div style="position: absolute; top: 0px; left: 0px;">
+				<img data-bind="attr: { src: src }" style="width: 100%;" />
+			</div>
+			<p style="margin-top: -110px;">
+				<span data-bind="text: bottomText"></span>
+			</p>
+		</div>
+	</div>
+</div>

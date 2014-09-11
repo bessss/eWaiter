@@ -1,8 +1,5 @@
   var MyApp = window.MyApp = { };
   $(function() {
-
-    
-
     MyApp.app = new DevExpress.framework.html.HtmlApplication({
       namespace: MyApp,
       layoutSet: DevExpress.framework.html.layoutSets['slideout'],
@@ -20,7 +17,7 @@
         title: "Выбрать другой ресторан",
         action: function()
         {
-          SRP.createPanel('','user');
+          SRP.createPanel(undefined,'user');
         },
         icon: "refresh",
         visible: false

@@ -29,6 +29,8 @@ function createPanel(restStore,user)
       {
         SRP.options.visible = false;
         selectRest.idRest = this._options.idRestaurant;
+        selectRest.restTitle = this._options.title;
+        selectRest.cssName = this._options.cssName;
         MMT.getMenu();
       }
     }
@@ -38,9 +40,13 @@ function createPanel(restStore,user)
   {
     this.options.visible = true;
     this.options.dataSource = this.restStore;
-    
-    this.map = $('#selectRestPanel').dxActionSheet( obj.options );
   }
+  else
+  {
+    this.options.visible = false;
+  }
+
+  this.map = $('#selectRestPanel').dxActionSheet( obj.options );
 }
 
 var SRP = new selectRestPanel();

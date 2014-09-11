@@ -41,7 +41,7 @@ function intervalSearch()
 {
   setInterval(function(){
     restClose.intervalSearchRest();
-  },selectRest.updateTimeRest);
+  },10000);//selectRest.updateTimeRest);
 }
 
 function intervalSearchRest()
@@ -66,6 +66,7 @@ function intervalSearchRest()
     if ( tempArray.length > 1 )
     {
       MyApp.app.navigation[2].option("visible", true);
+      SRP.options.dataSource = tempArray;
     }
     else
     {
@@ -88,12 +89,20 @@ function intervalSearchRest()
     else
     {
       //Если не находимся в текущем ресторане
+      if ( selectRest.restCount != tempArray.length )
+      {
+        SRP.createPanel( tempArray );
+      }
       selectRest.selectCountRest();
+      MMT.deletePivot();
     }
   }
   else
   {
+    SRP.createPanel( tempArray );
+    MMT.deletePivot();
     MyApp.app.navigation[2].option("visible", false);
+    LP.createToastMessage('Рядом с Вами нет ресторанов',3000,1);
   }
 
   selectRest.restCount = tempArray.length;
@@ -102,8 +111,16 @@ function intervalSearchRest()
 function searchRest(markersStore)
 {
   var tempArray = new Array();
-  this.store = markersStore;
-  var tempCount = markersStore.length;
+
+  if ( markersStore != undefined )
+  {
+    this.store = markersStore;
+    var tempCount = markersStore.length;
+  }
+  else
+  {
+    var tempCount = this.store.length;
+  }
 
   for ( var i = 0; i < tempCount; ++i )
   {
@@ -120,10 +137,13 @@ function searchRest(markersStore)
   {
     SRP.createPanel( tempArray );
     MyApp.app.navigation[2].option("visible", true);
+    SRP.options.dataSource = tempArray;
   }
   else
   {
     MyApp.app.navigation[2].option("visible", false);
+    LP.deleteLoadPanel();
+    LP.createToastMessage('Рядом с Вами нет ресторанов',3000,1);
   }
 }
 

@@ -1,0 +1,34 @@
+/*÷вет кнопок левого меню*/
+#nav div {
+	background-color: #d2202f;
+	/*width: 100%;*/
+}
+/*Ћогтип компании*/
+#nav>:first-child {
+	background-image:
+		url('http://ewaiter.info/application/images/evrasia_theme_logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 164px;
+	color: black;
+	border-top: 0px solid #efefef !important;
+	background-color: transparent;
+}
+/*Ћевое меню*/
+.dx-slideout-menu {
+	background-color: #efefef;
+}
+/*÷вет шрифта кнопок левого меню*/
+.dx-navigation-item {
+	color: #ffffff;
+}
+/*÷вет разделительной линии кнопок левого меню*/
+#nav div.dx-list-item {
+	border-top: 1px solid #f14656;
+	width: 100%;
+}
+/*÷вет border названи€ ресторана*/
+#nav>:first-child div div.dx-navigation-item {
+	border: 1px solid #bc3f4a;
+	border-bottom: 0px solid #bc3f4a;
+}

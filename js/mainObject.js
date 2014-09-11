@@ -2,17 +2,22 @@ function mainObject()
 {
   this.idRest = null;
 
-  this.addRestLogo = addRestLogo;
+  this.modeCss = modeCss;
 
-  this.addRestLogo();
 }
 
-function addRestLogo()
+function modeCss(operation)
 {
-  /*if ( $('.restLogo').length == 0 )
+  $('.cssOver').remove();
+
+  if ( operation == undefined )
   {
-    $('.dx-scrollview-content:first').prepend('<div class="restLogo"></div>');
-  }*/
+    $('head').append('<link rel="stylesheet" type="text/css" href="css/restaurant_' + selectRest.cssName + '.css" class="cssOver" />');
+  }
+  else
+  {
+    $('head').append('<link rel="stylesheet" type="text/css" href="css/restaurant_default.css" class="cssOver" />');
+  }
 }
 
 var mainObject = new mainObject();

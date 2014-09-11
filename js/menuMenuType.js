@@ -13,6 +13,14 @@ function menuMenuType()
   this.getMenu = getMenu;
   this.setItems = setItems;
   this.getImagePath = getImagePath;
+  this.deletePivot = deletePivot;
+}
+
+function deletePivot()
+{
+  MMT.options.itemTemplate = '';
+  MMT.options.dataSource = undefined;
+  $('#pivotMenu').dxPivot( MMT.options );
 }
 
 function getImagePath(imagePath)
@@ -43,6 +51,8 @@ function setItems()
 function getMenu()
 {
   LP.createLoadPanel('Получение меню ресторана');
+  MyApp.app.navigation[0].option("title",selectRest.restTitle);
+  mainObject.modeCss();
 
   MMT.options.itemTemplate = undefined;
   MMT.options.dataSource = undefined;
@@ -66,7 +76,8 @@ function getMenu()
       }
       else
       {
-        LP.createToastMessage('Меню для этого ресторана отсутствует',3000,1)
+        MyApp.app.navigation[1].option("visible", false);
+        LP.createToastMessage('Меню для этого ресторана отсутствует',3000,1);
       }
     }
   });

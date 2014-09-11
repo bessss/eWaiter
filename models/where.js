@@ -43,20 +43,20 @@ function setPosition()
 
 function updateUserPosition()
 {
-  var obj = this;
+  /*var obj = this;
   setInterval(function(){
     navigator.geolocation.getCurrentPosition(function(position) {
       mapObject.latitude = position.coords.latitude;
       mapObject.longitude = position.coords.longitude;
       mapObject.accuracy = position.coords.accuracy;
-    })},obj.updateUser);
+    })},obj.updateUser);*/
 }
 
 function getPosition()
 {
   LP.createLoadPanel('Определение местоположения');
 
-  navigator.geolocation.getCurrentPosition(function(position) {
+  /*navigator.geolocation.getCurrentPosition(function(position) {
     mapObject.latitude = position.coords.latitude;
     mapObject.longitude = position.coords.longitude;
     mapObject.accuracy = position.coords.accuracy;
@@ -65,7 +65,12 @@ function getPosition()
   },
   function(){
     LP.deleteLoadPanel();
-  });
+  });*/
+  this.latitude = '60.001';
+  this.longitude = '30.2025';
+  this.accuracy = '40';
+  this.setPosition();
+  this.getMarkers();
 }
 
 function setMarkers(markers)
@@ -123,6 +128,10 @@ function getMarkers(auto)
           //Поиск ближайших ресторанов --> TIMER
           restClose.intervalSearch();
         }
+      }
+      else
+      {
+        LP.createToastMessage('Рестораны в базе отсутствуют',3000,1);
       }
     }
   });

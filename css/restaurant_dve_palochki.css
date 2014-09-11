@@ -1,0 +1,32 @@
+/*÷вет кнопок левого меню*/
+#nav div {
+	background-color: #a67d54;
+}
+/*Ћогтип компании*/
+#nav>:first-child {
+	background-image:
+		url('http://ewaiter.info/application/images/dve_palochki_theme_logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 164px;
+	color: black;
+	border-top: 0px solid #efefef !important;
+	background-color: transparent;
+}
+/*Ћевое меню*/
+.dx-slideout-menu {
+	background-color: #d2202f;
+}
+/*÷вет шрифта кнопок левого меню*/
+.dx-navigation-item {
+	color: #ffffff;
+}
+/*÷вет разделительной линии кнопок левого меню*/
+#nav div.dx-list-item {
+	border-top: 1px solid #916b45;
+}
+/*÷вет border названи€ ресторана*/
+#nav>:first-child div div.dx-navigation-item {
+	border: 1px solid #916b45;
+	border-bottom: 0px solid #916b45;
+}
