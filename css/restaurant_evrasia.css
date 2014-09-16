@@ -19,10 +19,10 @@
 .dx-navigation-item {
   color: #ffffff;
 }
-/*Цвет разделительной линии кнопок левого меню*/
+/*Цвет разделительной линии кнопок левого меню
 #nav div.dx-list-item {
   border-top: 1px solid #f14656;
-}
+}*/
 #nav>:first-child div {
   background-color: transparent !important;
 }

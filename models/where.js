@@ -14,7 +14,8 @@ function mapGoogle()
     zoom: 10,
     markers:[],
     name: 'gMap',
-    controls: true
+    controls: true,
+    autoAdjust: false
   };
 
   this.createMap = createMap;
@@ -35,42 +36,46 @@ function createMap()
   this.map = $('#mapView').dxMap( obj.options );
 }
 
-function setPosition()
+function setPosition(auto)
 {
-  this.options.center = this.latitude + "," + this.longitude;
-  this.options.markers[0] = { title: "Вы", location: [this.latitude, this.longitude] }
+  if ( auto == true )
+  {
+    this.options.center = this.latitude + "," + this.longitude;
+    this.options.markers.push( { title: "Вы", location: [mapObject.latitude, mapObject.longitude] } );
+  }
+  else
+  {
+    $('#mapView').dxMap("instance").removeMarker( mapObject.options.markers.length - 1 );
+    $('#mapView').dxMap("instance").addMarker( { title: "Вы", location: [mapObject.latitude, mapObject.longitude] } );
+  }
 }
 
 function updateUserPosition()
 {
-  /*var obj = this;
+  var obj = this;
   setInterval(function(){
     navigator.geolocation.getCurrentPosition(function(position) {
       mapObject.latitude = position.coords.latitude;
       mapObject.longitude = position.coords.longitude;
       mapObject.accuracy = position.coords.accuracy;
-    })},obj.updateUser);*/
+      obj.setPosition();
+  })},obj.updateUser);
 }
 
 function getPosition()
 {
   LP.createLoadPanel('Определение местоположения');
 
-  /*navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function(position) {
     mapObject.latitude = position.coords.latitude;
     mapObject.longitude = position.coords.longitude;
     mapObject.accuracy = position.coords.accuracy;
-    mapObject.setPosition();
+    //mapObject.setPosition();
     mapObject.getMarkers();
   },
   function(){
     LP.deleteLoadPanel();
-  });*/
-  this.latitude = '60.001';
-  this.longitude = '30.2025';
-  this.accuracy = '40';
-  this.setPosition();
-  this.getMarkers();
+  });
 }
 
 function setMarkers(markers)
@@ -92,7 +97,7 @@ function setMarkers(markers)
     mapObject.options.markers.push( mapObject.markersStore[i] );
   }
   mapObject.options.zoom = 13;
-  mapObject.createMap();
+  //mapObject.createMap();
 }
 
 function getMarkers(auto)
@@ -103,6 +108,7 @@ function getMarkers(auto)
   }
 
   var obj = this;
+
   $.ajax({
     type: "POST",
     url: "http://admin.ewaiter.info/outputs/outputRestaurantCoordinates.php",
@@ -117,6 +123,7 @@ function getMarkers(auto)
         obj.updateUser = temp['updateTimeUser'];
         selectRest.updateTimeRest = temp['updateTimeRest'];
         obj.setMarkers( temp["restaurant"] );
+        obj.setPosition(true);
         if ( auto == undefined )
         {
           //Если это не автоматическое обновление
