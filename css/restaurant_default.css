@@ -1,7 +1,7 @@
 #nav>:first-child {
-	background-image:
-		url('http://ewaiter.info/application/images/default_theme_logo.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 148px;
+  background-image:
+  url('http://ewaiter.info/application/images/default_theme_logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 148px;
 }

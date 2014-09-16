@@ -1,32 +1,39 @@
 /*÷вет кнопок левого меню*/
 #nav div {
-	background-color: #a67d54;
+  background-color: #a67d54;
 }
 /*Ћогтип компании*/
 #nav>:first-child {
-	background-image:
-		url('http://ewaiter.info/application/images/dve_palochki_theme_logo.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 164px;
-	color: black;
-	border-top: 0px solid #efefef !important;
-	background-color: transparent;
+  background-image: url('http://ewaiter.info/application/images/bg_all.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 120px;
+  color: black;
+  padding: 0px;
 }
 /*Ћевое меню*/
 .dx-slideout-menu {
-	background-color: #d2202f;
+  background-color: #d2202f;
 }
 /*÷вет шрифта кнопок левого меню*/
 .dx-navigation-item {
-	color: #ffffff;
+  color: #ffffff;
 }
 /*÷вет разделительной линии кнопок левого меню*/
 #nav div.dx-list-item {
-	border-top: 1px solid #916b45;
+  border-top: 1px solid #916b45;
 }
 /*÷вет border названи€ ресторана*/
+#nav>:first-child div {
+  background-color: transparent !important;
+}
+
 #nav>:first-child div div.dx-navigation-item {
-	border: 1px solid #916b45;
-	border-bottom: 0px solid #916b45;
+  height: 100px;
+  background: url('http://ewaiter.info/application/images/dve_palochki_theme_logo.png') no-repeat 6px 2px;
+  line-height: 100px;
+  padding-left: 110px;
+  font-size: 14px;
+  white-space: normal;
+  margin-top: 10px;
 }
