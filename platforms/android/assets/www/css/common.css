@@ -1,0 +1,53 @@
+#nav>:first-child div div.dx-navigation-item {
+  /*position: absolute;
+  text-align: center;
+  width: 260px;
+  top: 172px;
+  font-size: 12px;
+  height: 26px;*/
+  /*border-radius: 6px 6px 0px 0px;
+  padding: 2px;*/
+}
+
+.dx-button {
+  background: transparent;
+}
+
+.dx-pivottabs-tab span,.dx-pivottabs-ghosttab span {
+  font-size: 14px;
+}
+
+div.dx-action-sheet-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dx-toast-message {
+  font-size: 12px;
+}
+
+.dx-scrollable-content {
+  margin: 0px !important;
+}
+
+.myButton div span{
+  font-size: 10px;
+}
+/*Тех часть коментариев*/
+div.mc-cleanslate ul{
+  display: none !important;
+}
+
+/*Кнопка колличества ресторанов*/
+#IB{
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  line-height: 20px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 10000;
+  text-align: center;
+  font-size: 12px;
+}

@@ -1,0 +1,48 @@
+/*Цвет кнопок левого меню*/
+#nav div {
+  background-color: #d2202f;
+}
+/*Логотип компании*/
+#nav>:first-child {
+  background-image: url('http://ewaiter.info/application/images/bg_all.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 120px;
+  color: black;
+  padding: 0px;
+}
+/*Левое меню*/
+.dx-slideout-menu {
+  background-color: #e3e3e3;
+}
+/*Цвет шрифта кнопок левого меню*/
+.dx-navigation-item {
+  color: #ffffff;
+}
+/*Цвет разделительной линии кнопок левого меню
+#nav div.dx-list-item {
+  border-top: 1px solid #f14656;
+}*/
+#nav>:first-child div {
+  background-color: transparent !important;
+}
+/*Цвет border названия ресторана*/
+#nav>:first-child div div.dx-navigation-item {
+  height: 120px;
+  background: url('http://ewaiter.info/application/images/evrasia_theme_logo.png') no-repeat;
+  background-position: 4px 12px;
+  padding-left: 110px;
+  font-size: 14px;
+  white-space: normal;
+  margin-top: 10px;
+  width: 160px;
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: bold;
+}
+/*Подчеркивание в табах*/
+.dx-pivottabs-tab-selected{
+  -webkit-box-shadow: inset 0 -2px #97ad31, inset 0 -8px #d2202f;
+  -moz-box-shadow: inset 0 -2px #97ad31, inset 0 -8px #d2202f;
+  box-shadow: inset 0 -2px #97ad31, inset 0 -8px #d2202f;
+}

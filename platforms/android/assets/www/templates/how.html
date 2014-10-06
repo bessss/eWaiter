@@ -1,0 +1,39 @@
+<script type="text/javascript">
+galleryDataSource = new DevExpress.data.DataSource([
+  {
+    src: 'images/slider/pic_1.png',
+    topText: 'Рестораны рядом с Вами',
+    bottomText: 'Выберите понравившийся ресторан'
+  },
+  {
+    src: 'images/slider/pic_2.png',
+    topText: 'Меню ресторана',
+    bottomText: 'Вам доступно меню выбранного Вами ресторана'
+  },
+  {
+    src: 'images/slider/pic_3.png',
+    topText: 'Подробная информация о блюде',
+    bottomText: 'Выберите блюдо и Вам будет доступна подробная ирнформация о нем, отзывы посетителей'
+  },
+  {
+    src: 'images/slider/pic_4.png',
+    topText: 'Где доступен сервис eWaiter',
+    bottomText: 'Взгляните на карту и Вы увидете, где поблизости работает сервис'
+  }
+]);
+</script>
+<div data-options="dxView : { name: 'how', title: 'Как пользоваться приложением' } ">
+  <div class="gallery" data-bind="dxGallery: { dataSource: galleryDataSource }">
+    <div data-options="dxTemplate: { name: 'item' }">
+      <p style="margin-top: 20px;">
+        <span data-bind="text: topText"></span>
+      </p>
+      <div style="height: 80%">
+        <img data-bind="attr: { src: src }" style="height: 100%;" />
+      </div>
+      <div style="position: absolute;bottom: 28px;width: 80%;font-size: 12px;padding: 0px 10%;">
+        <span data-bind="text: bottomText"></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div data-options="dxView : { name: 'home', title: 'Меню ресторана' } ">
+  <div style="padding: 0px 10px 0px 20px; height: 100%;">
+
+    <div id="pivotMenu" data-bind="dxPivot: { dataSource: MMT.items }">
+      <div data-options="dxTemplate : { name: 'MMTx' } ">
+        <div data-bind="dxList: { dataSource: MMTlist }">
+        <div data-options="dxTemplate : { name: 'item' } ">
+          <table style="width: 100%;" onclick="mainObject.searchIdMenu(this);">
+            <tr>
+              <td style="width: 140px;vertical-align: top;"><img style="width: 140px; margin: 4px;" data-bind="attr: { src: getImagePath(image) }" /></td>
+              <td style="vertical-align: top;">
+                <div data-bind="text: menuName" style="white-space: normal;"></div>
+                <div data-bind="text: price" style="font-size: 12px; color: red; font-weight: bold;"></div>
+                <div style="float: left;"><img data-bind="attr: { src: ratingImage }" /></div>
+                <div style="float: left;font-size: 12px;margin-left: 10px;height: 25px; line-height: 25px;" data-bind="text: voiceCount"></div>
+                <div style="float: left;width: 16px;height: 25px;background-image: url('images/userSmall.png');background-repeat: no-repeat;background-position: 0px 4px;"></div>
+                <div style="display: none;" data-bind="text: menuId" divId=''></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
