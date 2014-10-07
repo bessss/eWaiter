@@ -37,6 +37,8 @@ D:\project\eWaiter\platforms\android\assets\www\images\evrasia.png \
 D:\project\eWaiter\platforms\android\assets\www\images\ewaiterLogo.png \
 D:\project\eWaiter\platforms\android\assets\www\images\logo.png \
 D:\project\eWaiter\platforms\android\assets\www\images\pivorama.png \
+D:\project\eWaiter\platforms\android\assets\www\images\share_20x20.png \
+D:\project\eWaiter\platforms\android\assets\www\images\share_40x40_old.png \
 D:\project\eWaiter\platforms\android\assets\www\images\slider \
 D:\project\eWaiter\platforms\android\assets\www\images\stars.png \
 D:\project\eWaiter\platforms\android\assets\www\images\stars2.png \
@@ -70,7 +72,6 @@ D:\project\eWaiter\platforms\android\assets\www\js\selectRestPanel.js \
 D:\project\eWaiter\platforms\android\assets\www\js\test_changeCoord.js \
 D:\project\eWaiter\platforms\android\assets\www\jslib\14.1.6 \
 D:\project\eWaiter\platforms\android\assets\www\jslib\jquery.rating-2.0.js \
-D:\project\eWaiter\platforms\android\assets\www\jslib\jquery.rating-2.0.min.js \
 D:\project\eWaiter\platforms\android\assets\www\jslib\support \
 D:\project\eWaiter\platforms\android\assets\www\jslib\14.1.6\css \
 D:\project\eWaiter\platforms\android\assets\www\jslib\14.1.6\dx.phonejs.js \
@@ -92,10 +93,14 @@ D:\project\eWaiter\platforms\android\assets\www\jslib\support\jquery-2.1.1.min.j
 D:\project\eWaiter\platforms\android\assets\www\jslib\support\knockout-3.1.0.js \
 D:\project\eWaiter\platforms\android\assets\www\models\menuDetail.js \
 D:\project\eWaiter\platforms\android\assets\www\models\where.js \
+D:\project\eWaiter\platforms\android\assets\www\plugins\com.native5.plugins.datepicker \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.device \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.dialogs \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.network-information \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.vibration \
+D:\project\eWaiter\platforms\android\assets\www\plugins\com.native5.plugins.datepicker\scripts \
+D:\project\eWaiter\platforms\android\assets\www\plugins\com.native5.plugins.datepicker\scripts\datePickerPlugin.js \
+D:\project\eWaiter\platforms\android\assets\www\plugins\com.native5.plugins.datepicker\scripts\share.js \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.device\www \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.device\www\device.js \
 D:\project\eWaiter\platforms\android\assets\www\plugins\org.apache.cordova.dialogs\www \

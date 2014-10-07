@@ -65,7 +65,8 @@ function intervalSearchRest()
   for ( var i = 0; i < obj.store.length; ++i )
   {
     var tempDist = obj.calcDist( mapObject.latitude, mapObject.longitude, obj.store[i]['latitude'], obj.store[i]['longitude'] );
-    if ( ( parseFloat(obj.store[i]['accuracy']) + mapObject.accuracy ) >= tempDist )
+    //if ( ( parseFloat(obj.store[i]['accuracy']) + mapObject.accuracy ) >= tempDist )
+    if ( ( 1000 + mapObject.accuracy ) >= tempDist )
     {
       tempArray.push( obj.store[i] );
     }
@@ -134,7 +135,8 @@ function searchRest(markersStore)
   for ( var i = 0; i < tempCount; ++i )
   {
     var tempDist = this.calcDist( mapObject.latitude, mapObject.longitude, this.store[i]['latitude'], this.store[i]['longitude'] );
-    if ( ( parseFloat(this.store[i]['accuracy']) + mapObject.accuracy ) >= tempDist )
+    //if ( ( parseFloat(this.store[i]['accuracy']) + mapObject.accuracy ) >= tempDist )
+    if ( ( 1000 + mapObject.accuracy ) >= tempDist )
     {
       tempArray.push( this.store[i] );
     }

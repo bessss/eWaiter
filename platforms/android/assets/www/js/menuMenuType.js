@@ -26,7 +26,7 @@ function createDetailPage()
           '<div data-options="dxView : { name: \'menuDetail_\' + mainObject.additionInfo[\'menuId\'], title: mainObject.additionInfo[\'name\']} ">' +
             '<div id="detailMenu" data-bind="dxList: { dataSource: detailMenu, grouped: true }">' +
               '<div data-options="dxTemplate: { name: \'group\' }">' +
-                '<div style="margin: 0px 3% 10px 3%;color: #ffffff;text-align: center;" data-bind="text: name"></div>' +
+                '<div id="nameDiches" style="margin: 0px 3% 10px 3%;color: #ffffff;text-align: center;" data-bind="text: name"></div>' +
                 '<div style="text-align: center;"><img style="width: 94%;" data-bind="attr: { src: image }" /></div>' +
                 '<div style="margin: 10px 3% 0px 3%;height: 50px;">' +
                   '<div style="font-size: 12px;margin: 0px 0px 4px 8px;">Оцените блюдо</div>' +
@@ -40,7 +40,9 @@ function createDetailPage()
                     '<span id="menuId" data-bind="text: menuId"></span>' +
                   '</div>' +
                 '</div>' +
-                '<!--<div id="mc-container"></div>-->' +
+                 '<div style="background-image: url(\'images/share_40x40.png\');background-repeat: no-repeat;margin: 20px 0px 0px 3%; " data-bind="dxButton: { text: \'Поделиться\', clickAction: buttonClickedTest }"></div>' +
+                '<span id="urlDiches" data-bind="text: urlRest" style="visibility: hidden;"></span>' +
+                 '<!--<div id="mc-container"></div>-->' +
                 '<div style="width: 100%;height: 300px;margin-top: 14px;" id="iFRM"></div>' +
               '</div>' +
             '</div>' +

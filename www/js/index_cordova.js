@@ -41,3 +41,10 @@ var app = {
         //
     }
 };
+
+app.handleShare = function(inputArr, successCallBack, errorCallBack) {
+	var successFunction = successCallBack || {};
+    var errorFunction = errorCallBack || function() {alert("Share Failed");};
+	var inputData = inputArr || {};
+    window.plugins.share.show(inputData, successFunction, errorFunction);
+};

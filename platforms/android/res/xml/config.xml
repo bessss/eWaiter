@@ -5,6 +5,12 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
+    <feature name="DatePickerPlugin">
+        <param name="android-package" value="com.native5.plugins.datepicker.DatePickerPlugin" />
+    </feature>
+    <feature name="Share">
+        <param name="android-package" value="com.native5.plugins.share.Share" />
+    </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>

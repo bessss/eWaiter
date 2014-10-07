@@ -53,7 +53,8 @@ function searchAdditionInfo(menuId)
         voiceCount: MMT.menuMenuTypeStore[i]['voiceCount'],
         name: MMT.menuMenuTypeStore[i]['menuName'],
         rating: MMT.menuMenuTypeStore[i]['rating'],
-        index: i
+        index: i,
+        urlRest: MMT.menuMenuTypeStore[i]['urlRest']
       };
     }
   }
@@ -87,25 +88,14 @@ function searchIdMenu(element)
 }
 
 var detailMenu = new Object();
-/*var DISQUS = new Object();
-var disqus_shortname = 'ewaiter';*/
+var DISQUS = new Object();
+var disqus_shortname = 'ewaiter';
 var disqus_identifier = 'none_identifie';
-/*var disqus_title = 'none_title';
-var disqus_url = 'none';*/
-var cackle_widget = new Array();
+var disqus_title = 'none_title';
+var disqus_url = 'none';
 
 function CCD()
-{
-	
-	var match,
-	pattern = /\+/g,
-	search = /([^&=]+)=?([^&]*)/g,
-	decode = function (s) { return decodeURIComponent(s.replace(pattern, " ")); },
-	query = window.location.search.substring(1);
-	params = {};
-	while (match = search.exec(query))
-	   params[decode(match[1])] = decode(match[2]);
-	
+{	
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     disqus_shortname = 'ewaiter'; // required: replace example with your forum shortname
     disqus_identifier = mainObject.additionInfo['menuId'];
@@ -115,24 +105,11 @@ function CCD()
     //var disqus_category_id = 'menuDetail_' + mainObject.additionInfo['menuId'] + '_disqus_category_id';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
-    /*(function() {
+    (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();*/
-
-  /*cackle_widget = new Array();
-  Cackle = new Array();
-  cackle_widget = window.cackle_widget || [];
-  disqus_identifier = mainObject.additionInfo['name'] + '_' + mainObject.additionInfo['menuId'];
-  cackle_widget.push({widget: 'Comment', id: 31237,channel: disqus_identifier});
-  (function() {
-    var mc = document.createElement('script');
-    mc.type = 'text/javascript';
-    mc.async = true;
-    mc.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cackle.me/widget.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-  })();*/
+    })();
 }
 
 function reloadMD()
@@ -141,9 +118,8 @@ function reloadMD()
     if ( $('#iFRM').length != undefined && $('#iFRM').length > 0 )
     {
       //$('#detailMenu').dxList({ dataSource: detailMenu });
-      document.title = mainObject.additionInfo['name'];
 
-      CCD();
+      //CCD();
       //$('#ifrm').attr('src','http://ewaiter.info/application/www/index.html?disqus_shortname=' + disqus_shortname + '&disqus_identifier=' + disqus_identifier);
       //$('#iframeDisc').remove();
       //$('<iframe style="width: 100%; height: 300px;display: table;" id="iframeDisc" src="http://ewaiter.info/application/www/index.html?disqus_shortname=' + disqus_shortname + '&disqus_identifier=' + disqus_identifier + '&disqus_title=' + disqus_title + '"></iframe>').appendTo('#iFRM');

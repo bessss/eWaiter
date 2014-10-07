@@ -43,6 +43,20 @@ module.exports = [
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "file": "plugins/com.native5.plugins.datepicker/scripts/datePickerPlugin.js",
+        "id": "com.native5.plugins.datepicker.datePicker",
+        "clobbers": [
+            "datePicker"
+        ]
+    },
+    {
+        "file": "plugins/com.native5.plugins.datepicker/scripts/share.js",
+        "id": "com.native5.plugins.datepicker.share",
+        "clobbers": [
+            "share"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -53,7 +67,8 @@ module.exports.metadata =
     "org.apache.cordova.geolocation": "0.3.10",
     "org.apache.cordova.dialogs": "0.2.10",
     "org.apache.cordova.device": "0.2.12",
-    "org.apache.cordova.console": "0.2.11"
+    "org.apache.cordova.console": "0.2.11",
+    "com.native5.plugins.datepicker": "0.1.1"
 }
 // BOTTOM OF METADATA
 });
