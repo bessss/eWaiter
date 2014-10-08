@@ -14,7 +14,7 @@ function setRatingHook()
 {
   var intervalID3 = setInterval(function(){
     if ( $('div.rating').length != undefined && $('div.rating').length > 0 )
-    {console.log('rating');
+    {
       $('div.rating').rating();
       clearInterval( intervalID3 );
     }

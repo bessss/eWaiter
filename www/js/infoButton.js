@@ -18,7 +18,7 @@ function viewMessage()
 }
 
 function analizIB(count)
-{console.log('1234');
+{
   this.count = count;
 
   if ( count > 0 )
