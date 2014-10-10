@@ -87,7 +87,7 @@ function setItems(status)
   {
     setTimeout(function(){LP.createToastMessage('Меню получено',3000);},1000);
   }
-  //navigator.vibrate(1000);
+  navigator.vibrate(300);
 }
 
 function getMenu()

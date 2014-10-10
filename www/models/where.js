@@ -93,8 +93,8 @@ function checkConnection(gps)
 
 function getPosition()
 {
-  //checkConnection();
-  /*switch ( mainObject.networkType )
+  checkConnection();
+  switch ( mainObject.networkType )
   {
     case 'Unknown connection':
     {
@@ -138,7 +138,7 @@ function getPosition()
       break;
     }
     default:
-    {*/
+    {
       LP.createLoadPanel('Определение местоположения');
 
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -150,15 +150,15 @@ function getPosition()
       },
       function(){
         LP.deleteLoadPanel();
-        /*navigator.notification.alert(
+        navigator.notification.alert(
           'Ошибка определения местоположения',
           alertDismissed,
           'Ошибка',
           'Ок'
-        );*/
+        );
       },{ maximumAge: 400, timeout: 10000, enableHighAccuracy: true });
-    //}
-  //}
+    }
+  }
 
  //TODO для тестирования this.getMarkers();
 }
@@ -233,7 +233,7 @@ function getMarkers(auto)
 var mapObject = new Object();
 
 $( document ).ready(function(){
-  mapObject = new mapGoogle();
+  //mapObject = new mapGoogle();
 });
 
 MyApp.where = function (params) {
