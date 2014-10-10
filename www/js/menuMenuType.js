@@ -28,7 +28,8 @@ function createDetailPage()
               '<div data-options="dxTemplate: { name: \'group\' }">' +
                 '<div id="nameDiches" style="margin: 0px 3% 10px 3%;color: #ffffff;text-align: center;" data-bind="text: name"></div>' +
                 '<div style="text-align: center;"><img style="width: 94%;" data-bind="attr: { src: image }" /></div>' +
-                '<div style="margin: 10px 3% 0px 3%;height: 50px;">' +
+                '<div style="margin: 10px 3% 0px 3%;text-align: justify;text-indent: 10px;text-transform: none;font: 14px sans-serif normal;" data-bind="text: shortDescription"></div>' +
+                '<div style="margin: 30px 3% 0px 3%;height: 50px;">' +
                   '<div style="font-size: 12px;margin: 0px 0px 4px 8px;">Оцените блюдо</div>' +
                   '<div class="rating" id="stars" style="height: 36px;">' +
                     '<input type="hidden" name="val" value="' + mainObject.additionInfo.rating + '">' +
@@ -42,7 +43,7 @@ function createDetailPage()
                 '</div>' +
                  '<div style="background-image: url(\'images/share_40x40.png\');background-repeat: no-repeat;margin: 20px 0px 0px 3%; " data-bind="dxButton: { text: \'Поделиться\', clickAction: buttonClickedTest }"></div>' +
                 '<span id="urlDiches" data-bind="text: urlRest" style="visibility: hidden;"></span>' +
-                 '<!--<div id="mc-container"></div>-->' +
+                 '<div id="disqus_thread""></div>' +
                 '<div style="width: 100%;height: 300px;margin-top: 14px;" id="iFRM"></div>' +
               '</div>' +
             '</div>' +
@@ -97,7 +98,8 @@ function getMenu()
 
   MMT.options.itemTemplate = undefined;
   MMT.options.dataSource = undefined;
-  $('#pivotMenu').dxPivot( MMT.options );
+  //$('#pivotMenu').dxPivot( MMT.options );
+  $('#pivotMenu').css('display','none');
 
   var obj = this;
   $.ajax({
@@ -110,6 +112,7 @@ function getMenu()
     success: function(msg){
       if ( msg != 'no data' )
       {
+        $('#pivotMenu').css('display','block');
         var temp = JSON.parse(msg);
         obj.menuMenuTypeStore = temp['menuMenuType'];
         obj.menuTypeStore = temp['menuType'];

@@ -18,6 +18,7 @@ function selectRestPanel()
 function createPanel(restStore,user)
 {
   var obj = this;
+  closeSlideOut();
   //LP.deleteLoadPanel();
   LP.createLoadPanel('Поиск ресторанов рядом с Вами');
 
@@ -28,7 +29,7 @@ function createPanel(restStore,user)
     for ( var i = 0; i < this.restStore.length; ++i )
     {
       this.restStore[i]['clickAction'] = function ()
-      {console.log( this );
+      {
         SRP.options.visible = false;
         selectRest.idRest = this._options.idRestaurant;
         selectRest.restTitle = this._options.adress;
