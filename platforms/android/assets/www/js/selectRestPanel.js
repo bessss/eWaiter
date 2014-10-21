@@ -5,6 +5,7 @@ function selectRestPanel()
     dataSource: [],
     visible: false,
     title: 'Рестораны рядом',
+    itemTemplate: 'SRPtest',
     cancelClickAction: function ()
     {
       SRP.options.visible = false;
@@ -17,6 +18,7 @@ function selectRestPanel()
 function createPanel(restStore,user)
 {
   var obj = this;
+  closeSlideOut();
   //LP.deleteLoadPanel();
   LP.createLoadPanel('Поиск ресторанов рядом с Вами');
 
@@ -30,7 +32,7 @@ function createPanel(restStore,user)
       {
         SRP.options.visible = false;
         selectRest.idRest = this._options.idRestaurant;
-        selectRest.restTitle = this._options.title;
+        selectRest.restTitle = this._options.adress;
         selectRest.cssName = this._options.cssName;
         MMT.getMenu();
       }

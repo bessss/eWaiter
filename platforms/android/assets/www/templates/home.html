@@ -1,7 +1,7 @@
-<div data-options="dxView : { name: 'home', title: 'Меню ресторана' } ">
+<div id="IBframe" data-options="dxView : { name: 'home', title: 'Меню ресторана' } ">
   <div style="padding: 0px 10px 0px 20px; height: 100%;">
 
-    <div id="pivotMenu" data-bind="dxPivot: { dataSource: MMT.items }">
+    <div id="pivotMenu" data-bind="dxPivot: { dataSource: MMT.items }" style="display: none;">
       <div data-options="dxTemplate : { name: 'MMTx' } ">
         <div data-bind="dxList: { dataSource: MMTlist }">
         <div data-options="dxTemplate : { name: 'item' } ">

@@ -14,7 +14,7 @@ function setRatingHook()
 {
   var intervalID3 = setInterval(function(){
     if ( $('div.rating').length != undefined && $('div.rating').length > 0 )
-    {console.log('rating');
+    {
       $('div.rating').rating();
       clearInterval( intervalID3 );
     }
@@ -54,11 +54,21 @@ function searchAdditionInfo(menuId)
         name: MMT.menuMenuTypeStore[i]['menuName'],
         rating: MMT.menuMenuTypeStore[i]['rating'],
         index: i,
-        urlRest: MMT.menuMenuTypeStore[i]['urlRest']
+        urlRest: MMT.menuMenuTypeStore[i]['urlRest'],
+        shortDescription: MMT.menuMenuTypeStore[i]['shortDescription']
       };
     }
   }
   return mainObject.additionInfo;
+}
+
+function closeSlideOut()
+{
+  if( $('.dx-swipeable').css('transform') == 'matrix(1, 0, 0, 1, 280, 0)' )
+  {
+    $('.nav-button').click();
+    $('.nav-button').trigger('touch');
+  }
 }
 
 function searchIdMenu(element)
@@ -119,7 +129,7 @@ function reloadMD()
     {
       //$('#detailMenu').dxList({ dataSource: detailMenu });
 
-      //CCD();
+      CCD();
       //$('#ifrm').attr('src','http://ewaiter.info/application/www/index.html?disqus_shortname=' + disqus_shortname + '&disqus_identifier=' + disqus_identifier);
       //$('#iframeDisc').remove();
       //$('<iframe style="width: 100%; height: 300px;display: table;" id="iframeDisc" src="http://ewaiter.info/application/www/index.html?disqus_shortname=' + disqus_shortname + '&disqus_identifier=' + disqus_identifier + '&disqus_title=' + disqus_title + '"></iframe>').appendTo('#iFRM');

@@ -1,4 +1,4 @@
-#nav>:first-child div div.dx-navigation-item {
+﻿#nav>:first-child div div.dx-navigation-item {
   /*position: absolute;
   text-align: center;
   width: 260px;
@@ -50,4 +50,5 @@ div.mc-cleanslate ul{
   z-index: 10000;
   text-align: center;
   font-size: 12px;
+  display: none;
 }

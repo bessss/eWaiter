@@ -42,7 +42,7 @@ function intervalSearch()
 {
   setInterval(function(){
     restClose.intervalSearchRest();
-  },3000);//selectRest.updateTimeRest);
+  },5000);//selectRest.updateTimeRest);
 }
 
 function resetAll()
@@ -72,7 +72,10 @@ function intervalSearchRest()
     }
   }
 
-  IB.analizIB( tempArray.length );
+  if ( IB.count != tempArray.length )
+  {
+    IB.analizIB( tempArray.length );
+  }
 
   if ( tempArray.length > 0 )
   {

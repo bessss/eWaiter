@@ -1,6 +1,7 @@
 function infoButton()
 {
-  this.count = 0;
+  this.count = null;
+  this.status = false;
 
   this.createIB = createIB;
   this.emptyIB = emptyIB;
@@ -28,6 +29,11 @@ function analizIB(count)
   {
     this.emptyIB();
   }
+
+  $('#IB').fadeIn(3000);
+  $('#IB').fadeOut(1500);
+  $('#IB').fadeIn(3000);
+  $('#IB').fadeOut(1500);
 }
 
 function emptyIB()
@@ -44,9 +50,12 @@ function setRestCount(count)
 
 function createIB()
 {
+  var obj = this;
+
   if ( $('#IB').length == 0 )
   {
     $('body').append( '<div id="IB" class="IB" onclick="IB.viewMessage();"></div>' );
+    //$('#IB').fadeIn(3000,function(){obj.status = true;});
   }
 }
 
